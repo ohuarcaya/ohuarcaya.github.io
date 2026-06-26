@@ -1,0 +1,193 @@
+/* Importar fuentes elegantes directamente */
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;600&display=swap');
+
+:host {
+  display: block;
+  background-color: #faf8f5; /* Crema suave */
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  padding: 20px 10px;
+}
+
+.wedding-container {
+  max-width: 550px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+}
+
+/* Tipografías e hilos */
+.main-title {
+  font-family: 'Alex Brush', cursive;
+  font-size: 3.5rem;
+  color: #8da491; /* Verde Sage */
+  font-weight: 400;
+  margin: 15px 0;
+}
+
+h2 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #8da491;
+  margin-bottom: 25px;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.08), transparent);
+  margin: 10px 0;
+}
+
+/* Secciones */
+.hero-section {
+  padding: 50px 20px;
+}
+
+.subtitle {
+  letter-spacing: 4px;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.blessing-container {
+  margin: 25px 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.parents-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.date-badge {
+  border-top: 1px solid #8da491;
+  border-bottom: 1px solid #8da491;
+  padding: 15px 0;
+  margin: 30px auto 10px auto;
+  max-width: 85%;
+}
+
+.date-text {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.section-card {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Timeline */
+.timeline-item {
+  margin-bottom: 35px;
+}
+
+.item-time {
+  display: block;
+  font-weight: 600;
+  color: #8da491;
+  font-size: 1.1rem;
+}
+
+.item-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 4px 0;
+}
+
+.item-dir {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+/* Botones */
+.action-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: #8da491;
+  color: white;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.action-btn:hover {
+  background-color: #768a79;
+}
+
+.whatsapp-btn {
+  background-color: #25D366;
+}
+
+.whatsapp-btn:hover {
+  background-color: #1ebd57;
+}
+
+/* Cuentas Bancarias */
+.account-card {
+  background: #fafafa;
+  border: 1px solid #eee;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.bank-name {
+  color: #004481; /* Azul corporativo BBVA */
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.digital-wallet {
+  background: #f4ecf7;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.wallet-name {
+  color: #7d3c98;
+  font-weight: 600;
+}
+
+.pass-badge {
+  display: inline-block;
+  margin-top: 15px;
+  border: 1px dashed #8da491;
+  padding: 5px 15px;
+  font-weight: 600;
+  color: #8da491;
+}
+
+.kids-policy {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #666;
+  margin-top: 10px;
+}
+
+.footer-section {
+  padding: 40px 20px;
+  background: #fbfbfb;
+}
+
+.thanks-text {
+  font-family: 'Alex Brush', cursive;
+  font-size: 2.2rem;
+  color: #8da491;
+}

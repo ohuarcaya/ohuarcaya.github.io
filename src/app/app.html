@@ -1,0 +1,88 @@
+<div class="wedding-container">
+  
+  <header class="hero-section">
+    <p class="subtitle">¡NOS CASAMOS!</p>
+    <h1 class="main-title">{{ novios.el }} & {{ novios.ella }}</h1> 
+    
+    <div class="blessing-container">
+      <p class="blessing-text">Con la bendición de Dios y nuestros padres</p> [cite: 1]
+      <div class="parents-grid">
+        <p><strong>{{ padresNovio.papa }}</strong><br>{{ padresNovio.mama }}</p> [cite: 2]
+        <p><strong>{{ padresNovia.papa }}</strong><br>{{ padresNovia.mama }}</p> [cite: 3]
+      </div>
+    </div>
+
+    <p class="invitation-text">Tenemos el agrado de invitarlos a nuestro matrimonio</p> [cite: 6, 7]
+    
+    <div class="date-badge">
+      <p class="date-text">{{ fecha }}</p> [cite: 8]
+      <p class="time-text">1:00 PM</p> [cite: 11]
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  <section class="section-card">
+    <h2>Cronograma</h2> [cite: 13]
+    <div class="timeline">
+      <div class="timeline-item" *ngFor="let item of cronograma">
+        <span class="item-time">{{ item.hora }}</span>
+        <h3 class="item-title">{{ item.titulo }}</h3>
+        <p class="item-lugar">{{ item.lugar }}</p>
+        <p class="item-dir">{{ item.direccion }}</p>
+        <a *ngIf="item.mapaUrl" [href]="item.mapaUrl" target="_blank" class="action-btn">Ver Ubicación</a> [cite: 12, 25]
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section-card">
+    <h2>Detalles</h2>
+    <div class="details-body">
+      <p><strong>Dress Code:</strong> {{ detalles.dressCode }}</p> [cite: 26]
+      <p class="kids-policy">"{{ detalles.notaNinos }}"</p> [cite: 30]
+      <div class="pass-badge">{{ detalles.pase }}</div> [cite: 29]
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section-card">
+    <h2>Colectivo</h2> [cite: 31]
+    <p class="colectivo-intro">Apreciamos mucho sus muestras de cariño a través de:</p> [cite: 32, 33]
+    
+    <div class="bank-accounts">
+      <div class="account-card" *ngFor="let c of cuentas">
+        <span class="bank-name">{{ c.banco }}</span> [cite: 34]
+        <p class="holder"><strong>Titular:</strong> {{ c.titular }}</p>
+        <p><strong>Cuenta Corriente:</strong> {{ c.cuenta }}</p>
+        <p class="cci"><strong>CCI:</strong> {{ c.cci }}</p>
+      </div>
+    </div>
+
+    <div class="digital-wallet">
+      <span class="wallet-name">{{ billeteras.plataformas }}</span> [cite: 44]
+      <p class="wallet-numbers">
+        <span *ngFor="let num of billeteras.numeros; let last = last">
+          {{ num }}{{ !last ? ' | ' : '' }}
+        </span>
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section-card confirmation-section">
+    <h2>Confirmar Asistencia</h2>
+    <p>Por favor, confirmar asistencia a Karen Melnevich Wedding Planner</p> [cite: 27]
+    <a [href]="whatsappPlannerLink" target="_blank" class="action-btn whatsapp-btn">
+      Enviar Mensaje [cite: 28]
+    </a>
+  </section>
+
+  <footer class="footer-section">
+    <p class="thanks-text">¡Gracias! Te esperamos</p> [cite: 47, 48]
+  </footer>
+
+</div>
