@@ -1,147 +1,251 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jean Carlo & Danaika - ¡Nos Casamos!</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-color: #8da491; /* Verde sage/eucalipto ideal para Pachacamac */
-            --text-dark: #333333;
-            --text-light: #666666;
-            --bg-cream: #faf8f5;
-        }
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Oscar & Carla — Invitación</title>
+        <meta name="description" content="Invitación de boda — Oscar y Carla." />
+        <style>
+            /* Paleta de la boda */
+            :root{
+                --ad1:#D81B60;--ad2:#F47A20;--ad3:#F7B733;--ad4:#F26A5E;--ad5:#F8C3A5;--ad6:#E96BA8;
+                --fol1:#5C8A45;--fol2:#A9B66A;
+                --pap1:#FFFFE3;--pap2:#E35336;
+                --damitos:#4682B4;--novio:#F5E1C0;
+                --overlay: rgba(255,255,227,0.68);
+                --text:#2b2b2b;--muted:#6b6b6b;
+            }
+            *{box-sizing:border-box}
+            html,body{height:100%}
+            body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;min-height:100vh;margin:0;background:linear-gradient(var(--overlay),var(--overlay)), url('public/wallpaper1.png') center/cover no-repeat; color:var(--text);display:flex;align-items:center;justify-content:center}
+            .wrap{width:100%;max-width:980px;padding:20px}
+            .card{background:rgba(255,255,255,0.94);border-radius:14px;padding:22px;box-shadow:0 14px 40px rgba(0,0,0,.08);margin:0 auto;text-align:center}
+            header{display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:center}
+            .logo{width:72px;height:72px}
+            .cover{flex:0 0 320px;min-height:200px;border-radius:10px;background-image:url('public/photos/01.svg');background-size:cover;background-position:center}
+            .title{flex:1 1 320px;text-align:center}
+            .names{font-size:2.2rem;color:var(--ad1);font-weight:700;margin:0}
+            .subtitle{margin-top:6px;color:var(--muted)}
+            .greeting{margin-top:14px;font-size:1.05rem}
+            .countdown{display:flex;gap:12px;justify-content:center;margin:18px 0}
+            .countdown > div{background:#fff;padding:12px 16px;border-radius:8px;min-width:72px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.04)}
+            h2{font-weight:700;letter-spacing:.6px;color:var(--ad2);margin:0 0 10px 0}
+            section{padding:18px 0;border-top:1px solid rgba(0,0,0,.03)}
+            .blocks{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+            .block{background:#fff;border-radius:10px;padding:12px 16px;min-width:200px;box-shadow:0 6px 18px rgba(0,0,0,.03)}
+            label{display:block;margin:10px 0 6px;font-weight:600}
+            input[type=text],input[type=number],textarea{width:100%;padding:10px;border:1px solid #eee;border-radius:8px}
+            .btn{display:inline-block;margin-top:10px;padding:12px 18px;background:var(--ad2);color:#fff;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+            footer{margin-top:18px;color:var(--muted);font-size:.95rem}
+            /* Carousel horizontal */
+            .carousel{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+            .carousel img{flex:0 0 72%;height:220px;object-fit:cover;border-radius:10px;scroll-snap-align:center}
+            .carousel::-webkit-scrollbar{height:8px}
+            .carousel::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--ad3),var(--ad4));border-radius:8px}
+            @media (min-width:900px){ .carousel img{flex:0 0 320px;height:220px} .cover{flex:0 0 360px} }
+            @media (max-width:600px){ .cover{display:none} .carousel img{flex:0 0 80%;height:160px} .block{min-width:140px} .names{font-size:1.6rem} }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="card">
+                <header>
+                    <img src="public/logo.svg" alt="Logo" class="logo" />
+                    <div class="cover" aria-hidden="true"></div>
+                    <div class="title">
+                        <h1 class="names">Oscar & Carla</h1>
+                        <div class="subtitle">Nos casamos — acompáñanos en este día</div>
+                        <div id="greeting" class="greeting">Hola — este es un saludo genérico.</div>
+                        <p class="muted" style="margin-top:10px;max-width:720px;margin-left:auto;margin-right:auto">Nos alegra compartir este día con ustedes. Será una celebración íntima entre familia y amigos con ceremonia, firmas y recepción. ¡Tu presencia hace la diferencia!</p>
+                        <div class="countdown" aria-hidden="true">
+                            <div><div id="days" style="font-weight:700;font-size:1.1rem">—</div><div style="color:var(--muted)">Días</div></div>
+                            <div><div id="hours" style="font-weight:700;font-size:1.1rem">—</div><div style="color:var(--muted)">Horas</div></div>
+                            <div><div id="mins" style="font-weight:700;font-size:1.1rem">—</div><div style="color:var(--muted)">Min</div></div>
+                            <div><div id="secs" style="font-weight:700;font-size:1.1rem">—</div><div style="color:var(--muted)">Seg</div></div>
+                        </div>
+                    </div>
+                </header>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+                <section id="invitados">
+                    <h2>Invitados</h2>
+                    <p style="margin:6px 0;color:var(--muted)">Eres un invitado muy especial.</p>
+                    <div id="guestName" style="font-size:1.05rem;font-weight:600;margin-top:6px">—</div>
+                </section>
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-cream);
-            color: var(--text-dark);
-            line-height: 1.6;
-            text-align: center;
-        }
+                <section id="info-card">
+                    <h2>Información</h2>
+                    <div class="blocks" style="align-items:stretch">
+                        <div class="block" style="text-align:left">
+                            <strong>Fecha</strong>
+                            <div style="margin-top:6px">23.01.2027</div>
+                        </div>
+                        <div class="block" style="text-align:left">
+                            <strong>Lugar</strong>
+                            <div style="margin-top:6px">Villa Victoria, Pachacamac</div>
+                            <a class="btn" style="margin-top:10px;display:inline-flex;align-items:center;gap:8px" href="https://www.google.com/maps/search/?api=1&query=Villa+Victoria+Pachacamac" target="_blank" rel="noopener">
+                                <!-- map pin icon -->
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7z" stroke="#fff" stroke-width="1" fill="#E35336"/></svg>
+                                Cómo llegar
+                            </a>
+                        </div>
+                        <div class="block" style="text-align:left">
+                            <strong>Dresscode</strong>
+                            <div style="margin-top:8px" class="dress-grid">
+                                <div style="display:flex;align-items:center;gap:8px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2v6" stroke="#2b2b2b" stroke-width="1.5" stroke-linecap="round"/><path d="M4 22v-2a6 6 0 016-6h4a6 6 0 016 6v2" stroke="#4682B4" stroke-width="1.5" stroke-linecap="round"/></svg><div><strong>Varones</strong><div style="color:var(--muted)">Traje completo</div></div></div>
+                                <div style="display:flex;align-items:center;gap:8px;margin-top:8px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2c2.5 0 4.5 2 4.5 4.5S14.5 11 12 11 7.5 9 7.5 6.5 9.5 2 12 2z" stroke="#2b2b2b" stroke-width="1.2"/><path d="M4 22c2-4 6-6 8-6s6 2 8 6" stroke="#E96BA8" stroke-width="1.5"/></svg><div><strong>Mujeres</strong><div style="color:var(--muted)">Vestido formal (evitar blanco / marfil)</div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #ffffff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
+                <section id="schedule-card">
+                    <h2>Cronograma</h2>
+                    <div class="blocks">
+                        <div class="block"><strong>Boda Religiosa</strong><div>3:00 p.m.</div></div>
+                        <div class="block"><strong>Boda Civil</strong><div>4:00 p.m.</div></div>
+                        <div class="block"><strong>Recepción</strong><div>5:00 p.m.</div></div>
+                    </div>
+                </section>
 
-        /* Secciones */
-        section {
-            padding: 40px 20px;
-            margin-bottom: 20px;
-        }
+                <section id="confirmar">
+                    <h2>Confirmar asistencia</h2>
+                    <p style="color:var(--muted);margin:6px 0">Por favor confirma tu asistencia haciendo clic en el botón.</p>
+                    <div style="margin-top:12px">
+                        <button id="openRsvp" class="btn">Confirmar asistencia</button>
+                        <div id="saved" style="margin-top:10px;color:green;display:none">Respuesta guardada localmente.</div>
+                    </div>
+                </section>
 
-        hr {
-            border: 0;
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
-            margin: 20px 0;
-        }
+                <section id="galeria">
+                    <h2>Retratos de Nuestro Amor</h2>
+                    <p style="color:var(--muted);margin:6px 0">Un minuto, un segundo, un instante que queda en la eternidad</p>
+                    <div class="carousel" style="margin-top:12px">
+                        <img src="public/photos/01.svg" alt="Recuerdo 1" />
+                        <img src="public/photos/02.svg" alt="Recuerdo 2" />
+                        <img src="public/photos/03.svg" alt="Recuerdo 3" />
+                        <img src="public/photos/04.svg" alt="Recuerdo 4" />
+                        <img src="public/photos/05.svg" alt="Recuerdo 5" />
+                        <img src="public/photos/06.svg" alt="Recuerdo 6" />
+                    </div>
+                </section>
 
-        /* Títulos Especiales */
-        .script-font {
-            font-family: 'Alex Brush', cursive;
-            font-size: 3.5rem;
-            color: var(--primary-color);
-            line-height: 1;
-        }
+                <!-- RSVP Modal -->
+                <div id="rsvpModal" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;z-index:1200">
+                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.45)" id="rsvpBackdrop"></div>
+                    <div role="dialog" aria-modal="true" aria-labelledby="rsvpTitle" style="background:#fff;border-radius:12px;max-width:520px;width:92%;padding:20px;box-shadow:0 20px 50px rgba(0,0,0,.25);position:relative;z-index:1201;margin:auto">
+                        <h3 id="rsvpTitle" style="margin:0 0 8px">Confirmar asistencia</h3>
+                        <form id="rsvpFormModal">
+                            <label for="m_nombre">Nombre</label>
+                            <input id="m_nombre" type="text" required />
 
-        h2 {
-            font-weight: 400;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-            color: var(--primary-color);
-        }
+                            <label for="m_personas">Número de personas</label>
+                            <select id="m_personas">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
 
-        /* Header / Portada */
-        header {
-            padding: 60px 20px;
-            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=600&auto=format&fit=crop') center/cover;
-        }
+                            <label style="margin-top:8px">Transporte</label>
+                            <div style="display:flex;flex-direction:column;gap:8px">
+                                <label><input type="checkbox" id="opt_taxi" /> Iré en taxi</label>
+                                <label><input type="checkbox" id="opt_auto_conductor" /> Auto propio con conductor designado</label>
+                                <label><input type="checkbox" id="opt_auto_necesita" /> Auto propio (necesita conductor)</label>
+                            </div>
 
-        .parents {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin: 20px 0;
-        }
+                            <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px">
+                                <button type="button" id="cancelRsvp" class="btn" style="background:#ccc;color:#111">Cancelar</button>
+                                <button type="submit" class="btn">Enviar confirmación</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
-        .date-box {
-            border-top: 1px solid var(--primary-color);
-            border-bottom: 1px solid var(--primary-color);
-            padding: 15px 0;
-            margin: 30px auto;
-            max-width: 80%;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
+                <div style="text-align:center;margin-top:18px">
+                    <button id="confirmFooter" class="btn">Confirmar asistencia</button>
+                </div>
 
-        /* Cronograma / Itinerario */
-        .timeline-item {
-            margin-bottom: 25px;
-        }
-        .time {
-            font-weight: 600;
-            color: var(--primary-color);
-            display: block;
-            font-size: 1.1rem;
-        }
+                <footer>
+                    <small style="color:var(--muted)">Demo lista para GitHub Pages. Sustituye las imágenes en public/photos/ y el logo en public/logo.svg.</small>
+                </footer>
+            </div>
+        </div>
 
-        /* Botones */
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-weight: 600;
-            transition: background 0.3s;
-            margin-top: 10px;
-            border: none;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #768a79;
-        }
+        <script>
+            // Fecha del evento (ISO con offset) — empieza la boda religiosa
+            const EVENT_ISO = '2027-01-23T15:00:00-05:00';
 
-        /* Cuentas Bancarias */
-        .account-card {
-            background: #fdfdfd;
-            border: 1px solid #eaeaea;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            text-align: left;
-            font-size: 0.9rem;
-        }
-        .bank-title {
-            font-weight: 600;
-            color: #004481; /* Azul BBVA */
-            margin-bottom: 5px;
-        }
+            function qs(name){ return new URLSearchParams(location.search).get(name) }
 
-        /* Footer */
-        footer {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            padding: 30px 20px;
-        }
-    </style>
+            // Aplicar paleta desde parámetros URL opcionales: ?accent=#...&bg=#...&text=#...
+            (function applyPaletteFromURL(){
+                const params = new URLSearchParams(location.search);
+                const accent = params.get('accent');
+                const bg = params.get('bg');
+                const text = params.get('text');
+                const accentDark = params.get('accentDark');
+                if(accent) document.documentElement.style.setProperty('--accent', accent);
+                if(accentDark) document.documentElement.style.setProperty('--accent-dark', accentDark);
+                if(bg) document.documentElement.style.setProperty('--bg', bg);
+                if(text) document.documentElement.style.setProperty('--text', text);
+            })();
+
+            // Countdown
+            const target = new Date(EVENT_ISO);
+            function updateCountdown(){
+                const now = new Date();
+                const diff = Math.max(0, target - now);
+                const days = Math.floor(diff / (1000*60*60*24));
+                const hours = Math.floor(diff / (1000*60*60) % 24);
+                const mins = Math.floor(diff / (1000*60) % 60);
+                const secs = Math.floor(diff / 1000 % 60);
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+                document.getElementById('mins').textContent = String(mins).padStart(2,'0');
+                document.getElementById('secs').textContent = String(secs).padStart(2,'0');
+            }
+            updateCountdown(); setInterval(updateCountdown,1000);
+
+            // Saludo personalizado y guest name
+            const inv = qs('inv');
+            const tel = qs('tel');
+            const greeting = document.getElementById('greeting');
+            const guestNameEl = document.getElementById('guestName');
+            if(inv){ try{ greeting.textContent = '¡Hola ' + decodeURIComponent(inv) + '!'; guestNameEl.textContent = decodeURIComponent(inv); }catch(e){ greeting.textContent='¡Hola!'; guestNameEl.textContent = inv; } }
+            else if(tel){ greeting.textContent = '¡Hola!'; guestNameEl.textContent = 'Invitado'; }
+            else { greeting.textContent = '¡Hola! — Bienvenido/a a nuestra invitación.'; }
+
+                // RSVP local using modal
+                const savedMsg = document.getElementById('saved');
+                const openRsvp = document.getElementById('openRsvp');
+                const rsvpModal = document.getElementById('rsvpModal');
+                const rsvpBackdrop = document.getElementById('rsvpBackdrop');
+                const cancelRsvp = document.getElementById('cancelRsvp');
+                const rsvpFormModal = document.getElementById('rsvpFormModal');
+
+                function openModal(){ rsvpModal.style.display='flex'; rsvpModal.style.alignItems='center'; rsvpModal.style.justifyContent='center'; document.body.style.overflow='hidden'; }
+                function closeModal(){ rsvpModal.style.display='none'; document.body.style.overflow=''; }
+
+                if(openRsvp) openRsvp.addEventListener('click', ()=> openModal());
+                if(rsvpBackdrop) rsvpBackdrop.addEventListener('click', ()=> closeModal());
+                if(cancelRsvp) cancelRsvp.addEventListener('click', ()=> closeModal());
+
+                // Prefill name if ?inv is present
+                if(inv){ try{ document.getElementById('m_nombre').value = decodeURIComponent(inv); }catch(e){ document.getElementById('m_nombre').value = inv; } }
+
+                rsvpFormModal.addEventListener('submit', (e)=>{
+                    e.preventDefault();
+                    const nombre = document.getElementById('m_nombre').value.trim();
+                    const personas = Number(document.getElementById('m_personas').value) || 1;
+                    const taxi = document.getElementById('opt_taxi').checked;
+                    const autoCon = document.getElementById('opt_auto_conductor').checked;
+                    const autoNeeds = document.getElementById('opt_auto_necesita').checked;
+                    if(!nombre){ alert('Por favor ingresa tu nombre'); return; }
+                    const payload = { nombre, personas, transporte:{taxi,autoCon,autoNeeds}, tel: tel||null, savedAt: new Date().toISOString() };
+                    const key = tel ? 'rsvp_'+tel : 'rsvp_guest';
+                    localStorage.setItem(key, JSON.stringify(payload));
+                    savedMsg.style.display='block';
+                    setTimeout(()=> savedMsg.style.display='none',3000);
+                    closeModal();
+                });
+        </script>
+    </body>
+</html>

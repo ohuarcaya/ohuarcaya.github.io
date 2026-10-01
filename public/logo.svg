@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-label="Logo Oscar y Carla">
+  <rect width="100%" height="100%" rx="24" fill="#f8eef1"/>
+  <g transform="translate(40,40)" fill="#b56c8a" font-family="sans-serif">
+    <text x="0" y="56" font-size="48" font-weight="700">O &amp; C</text>
+  </g>
+  <circle cx="190" cy="50" r="10" fill="#f0708a" opacity="0.9"/>
+</svg>
