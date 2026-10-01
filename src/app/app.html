@@ -1,88 +1,115 @@
 <div class="wedding-container">
-  
-  <header class="hero-section">
-    <p class="subtitle">¡NOS CASAMOS!</p>
-    <h1 class="main-title">{{ novios.el }} & {{ novios.ella }}</h1> 
-    
-    <div class="blessing-container">
-      <p class="blessing-text">Con la bendición de Dios y nuestros padres</p> [cite: 1]
-      <div class="parents-grid">
-        <p><strong>{{ padresNovio.papa }}</strong><br>{{ padresNovio.mama }}</p> [cite: 2]
-        <p><strong>{{ padresNovia.papa }}</strong><br>{{ padresNovia.mama }}</p> [cite: 3]
+  <section class="cover-section">
+    <div class="cover-copy">
+      <p class="eyebrow">¡NOS CASAMOS!</p>
+      <h1 class="cover-title">{{ novios.el }} & {{ novios.ella }}</h1>
+      <p class="intro-text">Con la bendición de Dios y nuestros padres, queremos invitarte a vivir con nosotros un día lleno de amor, alegría y momentos inolvidables.</p>
+
+      <div class="cover-details">
+        <div class="parents-block">
+          <p class="label">Padres del Novio</p>
+          <p><strong>{{ padresNovio.papa }}</strong><br>{{ padresNovio.mama }}</p>
+        </div>
+        <div class="parents-block">
+          <p class="label">Padres de la Novia</p>
+          <p><strong>{{ padresNovia.papa }}</strong><br>{{ padresNovia.mama }}</p>
+        </div>
+      </div>
+
+      <div class="date-badge cover-date">
+        <span class="date-text">{{ fecha }}</span>
+        <span class="time-text">1:00 PM</span>
       </div>
     </div>
 
-    <p class="invitation-text">Tenemos el agrado de invitarlos a nuestro matrimonio</p> [cite: 6, 7]
-    
-    <div class="date-badge">
-      <p class="date-text">{{ fecha }}</p> [cite: 8]
-      <p class="time-text">1:00 PM</p> [cite: 11]
+    <div class="cover-image">
+      <img [src]="gallery[0].src" [alt]="gallery[0].alt">
+      <div class="image-tag">Jean & Danaika</div>
     </div>
-  </header>
+  </section>
 
-  <hr class="divider">
+  <section class="section-card ceremony-section">
+    <div class="section-title-group">
+      <p class="eyebrow">Ceremonia</p>
+      <h2>Nuestra invitación</h2>
+    </div>
+    <p class="section-copy">Acompáñanos en una celebración elegante y cercana, donde cada detalle se ha elegido con cariño para que nuestro amor se convierta en un recuerdo compartido.</p>
 
-  <section class="section-card">
-    <h2>Cronograma</h2> [cite: 13]
-    <div class="timeline">
-      <div class="timeline-item" *ngFor="let item of cronograma">
-        <span class="item-time">{{ item.hora }}</span>
-        <h3 class="item-title">{{ item.titulo }}</h3>
-        <p class="item-lugar">{{ item.lugar }}</p>
-        <p class="item-dir">{{ item.direccion }}</p>
-        <a *ngIf="item.mapaUrl" [href]="item.mapaUrl" target="_blank" class="action-btn">Ver Ubicación</a> [cite: 12, 25]
+    <div class="ceremony-grid">
+      <article class="info-card">
+        <p class="card-label">Lugar</p>
+        <h3>{{ cronograma[0].lugar }}</h3>
+        <p>{{ cronograma[0].direccion }}</p>
+        <a [href]="cronograma[0].mapaUrl" target="_blank" class="link-btn">Ver en Maps</a>
+      </article>
+
+      <article class="info-card">
+        <p class="card-label">Dress Code</p>
+        <h3>{{ detalles.dressCode }}</h3>
+        <p>{{ detalles.notaNinos }}</p>
+      </article>
+
+      <article class="info-card wide-card">
+        <p class="card-label">Cronograma</p>
+        <div class="timeline">
+          <div class="timeline-item" *ngFor="let item of cronograma">
+            <span class="item-time">{{ item.hora }}</span>
+            <p class="item-title">{{ item.titulo }}</p>
+            <p class="item-dir">{{ item.direccion }}</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-card gallery-section">
+    <div class="section-title-group">
+      <p class="eyebrow">Galería de novios</p>
+      <h2>Historias en imágenes</h2>
+    </div>
+    <div class="gallery-scroll">
+      <div class="gallery-card" *ngFor="let photo of gallery">
+        <img [src]="photo.src" [alt]="photo.alt">
+        <p class="gallery-caption">{{ photo.caption }}</p>
       </div>
     </div>
   </section>
-
-  <hr class="divider">
-
-  <section class="section-card">
-    <h2>Detalles</h2>
-    <div class="details-body">
-      <p><strong>Dress Code:</strong> {{ detalles.dressCode }}</p> [cite: 26]
-      <p class="kids-policy">"{{ detalles.notaNinos }}"</p> [cite: 30]
-      <div class="pass-badge">{{ detalles.pase }}</div> [cite: 29]
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <section class="section-card">
-    <h2>Colectivo</h2> [cite: 31]
-    <p class="colectivo-intro">Apreciamos mucho sus muestras de cariño a través de:</p> [cite: 32, 33]
-    
-    <div class="bank-accounts">
-      <div class="account-card" *ngFor="let c of cuentas">
-        <span class="bank-name">{{ c.banco }}</span> [cite: 34]
-        <p class="holder"><strong>Titular:</strong> {{ c.titular }}</p>
-        <p><strong>Cuenta Corriente:</strong> {{ c.cuenta }}</p>
-        <p class="cci"><strong>CCI:</strong> {{ c.cci }}</p>
-      </div>
-    </div>
-
-    <div class="digital-wallet">
-      <span class="wallet-name">{{ billeteras.plataformas }}</span> [cite: 44]
-      <p class="wallet-numbers">
-        <span *ngFor="let num of billeteras.numeros; let last = last">
-          {{ num }}{{ !last ? ' | ' : '' }}
-        </span>
-      </p>
-    </div>
-  </section>
-
-  <hr class="divider">
 
   <section class="section-card confirmation-section">
-    <h2>Confirmar Asistencia</h2>
-    <p>Por favor, confirmar asistencia a Karen Melnevich Wedding Planner</p> [cite: 27]
-    <a [href]="whatsappPlannerLink" target="_blank" class="action-btn whatsapp-btn">
-      Enviar Mensaje [cite: 28]
-    </a>
+    <div class="section-title-group">
+      <p class="eyebrow">Confirmar asistencia</p>
+      <h2>Te esperamos con mucho cariño</h2>
+    </div>
+    <p class="section-copy">Confirma tu asistencia con nuestra organizadora y comparte tu cariño con los números y métodos oficiales.</p>
+
+    <div class="confirm-grid">
+      <div class="confirm-card">
+        <p class="card-label">Confirmación</p>
+        <p>Contacta a Karen Melnevich Wedding Planner y envía tu mensaje de asistencia directamente por WhatsApp.</p>
+        <a [href]="whatsappPlannerLink" target="_blank" class="action-btn whatsapp-btn">Enviar mensaje</a>
+      </div>
+
+      <div class="confirm-card">
+        <p class="card-label">Muestras de cariño</p>
+        <p class="wallet-name">{{ billeteras.plataformas }}</p>
+        <div class="gift-numbers">
+          <span *ngFor="let num of billeteras.numeros">{{ num }}</span>
+        </div>
+      </div>
+
+      <div class="confirm-card bank-collection">
+        <p class="card-label">Cuentas bancarias</p>
+        <div *ngFor="let c of cuentas" class="bank-mini-card">
+          <p><strong>{{ c.banco }}</strong></p>
+          <p>{{ c.titular }}</p>
+          <p>{{ c.cuenta }}</p>
+          <p>{{ c.cci }}</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <footer class="footer-section">
-    <p class="thanks-text">¡Gracias! Te esperamos</p> [cite: 47, 48]
+    <p class="thanks-text">¡Gracias por acompañarnos en este amoroso comienzo!</p>
   </footer>
-
 </div>

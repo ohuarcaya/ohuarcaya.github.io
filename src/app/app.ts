@@ -69,6 +69,23 @@ export class App {
     numeros: ['976 316 979', '974794977']
   };
 
+  gallery = [
+    { src: '/photos/foto1.png', alt: 'Foto del novio 1', caption: 'Jean en una sonrisa especial' },
+    { src: '/photos/foto2.png', alt: 'Foto del novio 2', caption: 'Jean disfrutando el día' },
+    { src: '/photos/foto3.png', alt: 'Foto del novio 3', caption: 'Momentos felices del novio' },
+    { src: '/photos/foto4.png', alt: 'Foto del novio 4', caption: 'Jean en una sonrisa especial' },
+    { src: '/photos/foto5.png', alt: 'Foto del novio 5', caption: 'Jean disfrutando el día' },
+    { src: '/photos/foto6.png', alt: 'Foto del novio 6', caption: 'Momentos felices del novio' }
+  ];
+
+  palette_colors = [
+    '#046307', // Verde oscuro
+    '#ffb200', // Amarillo
+    '#ff6f00',  // Naranja
+    '#d10068', // Rosa fuerte
+    '#FFB6C1', // Rosa claro
+  ]
+
   // Link directo de WhatsApp usando encoding para los espacios
   get whatsappPlannerLink(): string {
     const mensaje = encodeURIComponent('Hola Karen, quiero confirmar mi asistencia al matrimonio de Jean Carlo y Danaika.');
