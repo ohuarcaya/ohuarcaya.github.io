@@ -47,9 +47,28 @@
 
                 <hr />
 
-                <section>
-                    <h2>Confirmar asistencia (demo local)</h2>
-                    <p class="muted">Este formulario guarda la respuesta en tu navegador. Para guardar en Google Sheets, configura el Apps Script según el proyecto original.</p>
+                <section id="invitados">
+                    <h2>Invitados</h2>
+                    <p class="muted">Eres un invitado muy especial.</p>
+                    <div id="guestName" style="font-size:1.1rem;font-weight:600;margin-top:8px">—</div>
+                </section>
+
+                <section id="ceremonia">
+                    <h2>Ceremonia</h2>
+                    <div class="muted">Sábado 15 de mayo · 4:00 p.m.</div>
+                    <p style="margin-top:8px">Parroquia San José — Medellín</p>
+                    <p style="margin-top:10px"><a class="btn" href="#">¿Cómo llegar?</a></p>
+                </section>
+
+                <section id="celebracion">
+                    <h2>Celebración</h2>
+                    <div class="muted">Sábado 15 de mayo · 6:30 p.m. — 10:00 p.m.</div>
+                    <p style="margin-top:8px">Hacienda El Mirador — Envigado</p>
+                </section>
+
+                <section id="confirmar">
+                    <h2>Confirmar asistencia</h2>
+                    <p class="muted">Es importante que confirmes tu asistencia.</p>
                     <form id="rsvpForm">
                         <label for="nombre">Nombre o grupo</label>
                         <input id="nombre" type="text" placeholder="Ej: Andrés & Laura" />
@@ -60,14 +79,33 @@
                         <label for="mensaje">Mensaje (opcional)</label>
                         <textarea id="mensaje" rows="3" placeholder="Alguna nota para nosotros..."></textarea>
 
-                        <button class="btn" type="submit">Guardar respuesta</button>
+                        <button class="btn" type="submit">Confirmar asistencia</button>
                         <div id="saved" style="margin-top:10px;color:green;display:none">Respuesta guardada localmente.</div>
                     </form>
                 </section>
 
+                <section id="galeria">
+                    <h2>Retratos de Nuestro Amor</h2>
+                    <p class="muted">Un minuto, un segundo, un instante que queda en la eternidad</p>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:12px">
+                        <img src="public/photos/01.jpg" alt="Recuerdo 1" style="width:100%;height:110px;object-fit:cover;border-radius:6px"/>
+                        <img src="public/photos/02.jpg" alt="Recuerdo 2" style="width:100%;height:110px;object-fit:cover;border-radius:6px"/>
+                        <img src="public/photos/03.jpg" alt="Recuerdo 3" style="width:100%;height:110px;object-fit:cover;border-radius:6px"/>
+                        <img src="public/photos/04.jpg" alt="Recuerdo 4" style="width:100%;height:110px;object-fit:cover;border-radius:6px"/>
+                        <img src="public/photos/05.jpg" alt="Recuerdo 5" style="width:100%;height:110px;object-fit:cover;border-radius:6px"/>
+                        <img src="public/photos/06.jpg" alt="Recuerdo 6" style="width:100%;height:110px;object-fit:cover;border-radius:6px"/>
+                    </div>
+                </section>
+
+                <section id="regalos">
+                    <h2>Regalos</h2>
+                    <p class="muted">Tu presencia es nuestro mejor regalo. Si deseas ver detalles, haz clic abajo.</p>
+                    <p><a class="btn" href="#">Ver detalles</a></p>
+                </section>
+
                 <section>
                     <h2>Enlaces y ayuda</h2>
-                    <p class="muted">Para desplegar en GitHub Pages basta con subir este repositorio a una rama `gh-pages` o activar Pages desde `main`. Si quieres habilitar RSVP en Google Sheets, sigue la guía del proyecto original:</p>
+                    <p class="muted">Si quieres habilitar RSVP en Google Sheets, sigue la guía del proyecto original:</p>
                     <p><a href="https://github.com/Farid13-dev/invitacion-digital" target="_blank" rel="noopener">Repositorio original — invitacion-digital</a></p>
                 </section>
 
