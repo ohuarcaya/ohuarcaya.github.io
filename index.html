@@ -1,147 +1,148 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jean Carlo & Danaika - ¡Nos Casamos!</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-color: #8da491; /* Verde sage/eucalipto ideal para Pachacamac */
-            --text-dark: #333333;
-            --text-light: #666666;
-            --bg-cream: #faf8f5;
-        }
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Invitación - Demo estático</title>
+        <meta name="description" content="Invitación estática para GitHub Pages (saludo personalizado y RSVP local)." />
+        <style>
+            :root{--accent:#8da491;--bg:#faf8f5;--text:#222}
+            *{box-sizing:border-box}
+            body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Segoe UI Emoji,Helvetica,Arial;min-height:100vh;background:var(--bg);color:var(--text);margin:0}
+            .wrap{max-width:900px;margin:28px auto;padding:20px}
+            .card{background:#fff;border-radius:10px;padding:28px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+            header{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+            .cover{flex:1 1 260px;min-height:180px;border-radius:8px;background-image:url('public/photos/01.jpg');background-size:cover;background-position:center}
+            .title{flex:2 1 260px;text-align:left}
+            .names{font-size:2.2rem;color:var(--accent);font-weight:700;margin:0}
+            .subtitle{margin-top:6px;color:#666}
+            .greeting{margin-top:18px;font-size:1.1rem}
+            .countdown{display:flex;gap:12px;margin:18px 0}
+            .countdown > div{background:#f6f7f8;padding:12px 16px;border-radius:6px;min-width:68px;text-align:center}
+            label{display:block;margin:8px 0;font-weight:600}
+            input[type=text],input[type=number],textarea{width:100%;padding:8px;border:1px solid #e6e6e6;border-radius:6px}
+            .btn{display:inline-block;margin-top:10px;padding:10px 16px;background:var(--accent);color:#fff;border-radius:6px;border:0;cursor:pointer}
+            footer{margin-top:18px;color:#666;font-size:.9rem}
+            .muted{color:#777;font-size:.95rem}
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="card">
+                <header>
+                    <div class="cover" aria-hidden="true"></div>
+                    <div class="title">
+                        <h1 class="names">Jean Carlo & Danaika</h1>
+                        <div class="subtitle">Te invitamos a acompañarnos</div>
+                        <div id="greeting" class="greeting muted">Hola — este es un saludo genérico.</div>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+                        <div class="countdown" aria-hidden="true">
+                            <div><div id="days" style="font-weight:700;font-size:1.2rem">—</div><div class="muted">Días</div></div>
+                            <div><div id="hours" style="font-weight:700;font-size:1.2rem">—</div><div class="muted">Horas</div></div>
+                            <div><div id="mins" style="font-weight:700;font-size:1.2rem">—</div><div class="muted">Min</div></div>
+                            <div><div id="secs" style="font-weight:700;font-size:1.2rem">—</div><div class="muted">Seg</div></div>
+                        </div>
+                    </div>
+                </header>
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-cream);
-            color: var(--text-dark);
-            line-height: 1.6;
-            text-align: center;
-        }
+                <hr />
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #ffffff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
+                <section>
+                    <h2>Confirmar asistencia (demo local)</h2>
+                    <p class="muted">Este formulario guarda la respuesta en tu navegador. Para guardar en Google Sheets, configura el Apps Script según el proyecto original.</p>
+                    <form id="rsvpForm">
+                        <label for="nombre">Nombre o grupo</label>
+                        <input id="nombre" type="text" placeholder="Ej: Andrés & Laura" />
 
-        /* Secciones */
-        section {
-            padding: 40px 20px;
-            margin-bottom: 20px;
-        }
+                        <label for="asisten">Personas que asistirán</label>
+                        <input id="asisten" type="number" min="0" value="1" />
 
-        hr {
-            border: 0;
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
-            margin: 20px 0;
-        }
+                        <label for="mensaje">Mensaje (opcional)</label>
+                        <textarea id="mensaje" rows="3" placeholder="Alguna nota para nosotros..."></textarea>
 
-        /* Títulos Especiales */
-        .script-font {
-            font-family: 'Alex Brush', cursive;
-            font-size: 3.5rem;
-            color: var(--primary-color);
-            line-height: 1;
-        }
+                        <button class="btn" type="submit">Guardar respuesta</button>
+                        <div id="saved" style="margin-top:10px;color:green;display:none">Respuesta guardada localmente.</div>
+                    </form>
+                </section>
 
-        h2 {
-            font-weight: 400;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-            color: var(--primary-color);
-        }
+                <section>
+                    <h2>Enlaces y ayuda</h2>
+                    <p class="muted">Para desplegar en GitHub Pages basta con subir este repositorio a una rama `gh-pages` o activar Pages desde `main`. Si quieres habilitar RSVP en Google Sheets, sigue la guía del proyecto original:</p>
+                    <p><a href="https://github.com/Farid13-dev/invitacion-digital" target="_blank" rel="noopener">Repositorio original — invitacion-digital</a></p>
+                </section>
 
-        /* Header / Portada */
-        header {
-            padding: 60px 20px;
-            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=600&auto=format&fit=crop') center/cover;
-        }
+                <footer>
+                    <small class="muted">Demo estático generado a partir de la plantilla pública. Sustituye imágenes en <strong>public/photos/</strong> y ajusta la fecha en el script.</small>
+                </footer>
+            </div>
+        </div>
 
-        .parents {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin: 20px 0;
-        }
+        <script>
+            // Fecha del evento (ISO con offset). Modifícala cuando necesites.
+            const EVENT_ISO = '2027-05-15T16:00:00-05:00';
 
-        .date-box {
-            border-top: 1px solid var(--primary-color);
-            border-bottom: 1px solid var(--primary-color);
-            padding: 15px 0;
-            margin: 30px auto;
-            max-width: 80%;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
+            function qs(name){
+                const params = new URLSearchParams(location.search);
+                return params.get(name);
+            }
 
-        /* Cronograma / Itinerario */
-        .timeline-item {
-            margin-bottom: 25px;
-        }
-        .time {
-            font-weight: 600;
-            color: var(--primary-color);
-            display: block;
-            font-size: 1.1rem;
-        }
+            // Mostrar saludo personalizado si viene ?inv=...
+            const inv = qs('inv');
+            const tel = qs('tel');
+            const greeting = document.getElementById('greeting');
+            if(inv){
+                try{greeting.textContent = '¡Hola ' + decodeURIComponent(inv) + '!';}catch(e){greeting.textContent = '¡Hola!';}
+            } else if(tel){
+                greeting.textContent = '¡Hola!';
+            } else {
+                greeting.textContent = '¡Hola! — Bienvenido/a a nuestra invitación.';
+            }
 
-        /* Botones */
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-weight: 600;
-            transition: background 0.3s;
-            margin-top: 10px;
-            border: none;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #768a79;
-        }
+            // Cuenta regresiva simple
+            const target = new Date(EVENT_ISO);
+            function updateCountdown(){
+                const now = new Date();
+                const diff = Math.max(0, target - now);
+                const days = Math.floor(diff / (1000*60*60*24));
+                const hours = Math.floor(diff / (1000*60*60) % 24);
+                const mins = Math.floor(diff / (1000*60) % 60);
+                const secs = Math.floor(diff / 1000 % 60);
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+                document.getElementById('mins').textContent = String(mins).padStart(2,'0');
+                document.getElementById('secs').textContent = String(secs).padStart(2,'0');
+            }
+            updateCountdown(); setInterval(updateCountdown,1000);
 
-        /* Cuentas Bancarias */
-        .account-card {
-            background: #fdfdfd;
-            border: 1px solid #eaeaea;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            text-align: left;
-            font-size: 0.9rem;
-        }
-        .bank-title {
-            font-weight: 600;
-            color: #004481; /* Azul BBVA */
-            margin-bottom: 5px;
-        }
+            // RSVP local
+            const form = document.getElementById('rsvpForm');
+            const nombreInput = document.getElementById('nombre');
+            const asistenInput = document.getElementById('asisten');
+            const mensajeInput = document.getElementById('mensaje');
+            const savedMsg = document.getElementById('saved');
 
-        /* Footer */
-        footer {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            padding: 30px 20px;
-        }
-    </style>
+            // Prefill from URL if available
+            if(inv) {
+                try{ nombreInput.value = decodeURIComponent(inv); }catch(e){ nombreInput.value = inv; }
+            }
+            if(tel) {
+                const prev = localStorage.getItem('rsvp_'+tel);
+                if(prev){
+                    const obj = JSON.parse(prev);
+                    nombreInput.value = obj.nombre || nombreInput.value;
+                    asistenInput.value = obj.asisten || asistenInput.value;
+                    mensajeInput.value = obj.mensaje || '';
+                }
+            }
+
+            form.addEventListener('submit', (e)=>{
+                e.preventDefault();
+                const payload = {nombre:nombreInput.value, asisten:Number(asistenInput.value)||0, mensaje:mensajeInput.value, tel: tel || null, savedAt: new Date().toISOString()};
+                const key = tel ? 'rsvp_'+tel : 'rsvp_guest';
+                localStorage.setItem(key, JSON.stringify(payload));
+                savedMsg.style.display = 'block';
+                setTimeout(()=> savedMsg.style.display='none',3000);
+            });
+        </script>
+    </body>
+</html>
