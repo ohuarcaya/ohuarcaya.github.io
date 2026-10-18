@@ -3,32 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Boda | Oscar y Carla</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Nuestra Boda | Carla y Oscar</title>
+    <link rel="icon" href="public/logo.svg" type="image/x-icon">
     
-    <!-- Fuentes: Great Vibes (Cursiva elegante de boda) y Montserrat (Lectura web) -->
+    <!-- Fuentes de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         /* ================= PALETA DE COLORES ================= */
         :root {
-            --bg-marfil: #FAF9F6;       /* Marfil cálido de fondo */
-            --orange-vib: #F47A20;      /* Naranja Vibrante */
-            --terracota: #E35336;       /* Terracota */
-            --fucsia: #D81B60;          /* Fucsia (Secundario) */
-            --text-main: #4A4A4A;       /* Texto oscuro suave */
-            --gold-accent: #D4AF37;
+            --bg: #FFFBEF;            /* Fondo marfil */
+            --title: #8C3B24;         /* Títulos terracota */
+            --text: #2C1E1A;          /* Texto marrón oscuro */
+            --btn: #8C3B24;           /* Botones terracota */
+            --botanical: #5C8A45;     /* Detalles botánicos */
+            --border: #E8D9C6;        /* Líneas y bordes */
+            /* --bg: #FFFBEF;            Fondo marfil */
+            /* --title: #E35336;         Títulos terracota */
+            /* --text: #49382E;          Texto marrón oscuro */
+            /* --btn: #E35336;           Botones terracota */
+            /* --botanical: #5C8A45;     Detalles botánicos */
+            /* --border: #E8D9C6;        Líneas y bordes */
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-marfil);
-            color: var(--text-main);
-            overflow: hidden; /* Oculta el scroll hasta abrir el sobre */
+            font-family: 'Cormorant Garamond', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
         }
 
         .cursive-title {
@@ -36,385 +47,391 @@
             font-weight: normal;
         }
 
+        /* ================= MENÚ SUPERIOR RESPONSIVE ================= */
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: rgba(255, 251, 239, 0.95); backdrop-filter: blur(5px);
+            z-index: 1000; display: flex; justify-content: center; align-items: center; gap: 20px;
+            padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .nav-brand { display: none; font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--title); line-height: 1; }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--title); cursor: pointer; }
+        
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a {
+            color: var(--text); text-decoration: none; font-size: 0.85rem;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--title); }
+
+        @media (max-width: 768px) {
+            .navbar { justify-content: space-between; }
+            .nav-brand, .menu-toggle { display: block; }
+            .nav-links {
+                position: absolute; top: 100%; left: 0; width: 100%;
+                background: rgba(255, 251, 239, 0.98); flex-direction: column;
+                text-align: center; display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { padding: 15px; border-bottom: 1px solid var(--border); }
+        }
+
+        /* ================= BOTÓN FLOTANTE DE MÚSICA ================= */
+        #musicToggle {
+            position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+            background: rgba(255, 251, 239, 0.7); backdrop-filter: blur(5px);
+            border: 1px solid var(--border); color: var(--title);
+            width: 50px; height: 50px; border-radius: 50%; font-size: 1.2rem;
+            cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex; justify-content: center; align-items: center; transition: all 0.3s;
+        }
+        #musicToggle:hover { transform: scale(1.1); background: rgba(255, 251, 239, 0.9); }
+
         /* ================= PANTALLA DE ERROR ================= */
         #error-screen {
-            display: none;
-            height: 100vh;
-            background-color: var(--bg-marfil);
-            color: var(--terracota);
+            display: none; height: 100vh; background-color: var(--bg); color: var(--title);
             flex-direction: column; justify-content: center; align-items: center;
             text-align: center; padding: 30px; font-size: 1.2rem; font-weight: 600;
         }
 
-        /* ================= SOBRE ESTILO IMAGEN ================= */
-        #envelope-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            background-color: var(--bg-marfil);
-            z-index: 9999;
-            transition: opacity 1s;
-        }
-
-        /* Parte inferior (Fondo del sobre) */
-        .envelope-bottom {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
-            padding-bottom: 12vh;
-            background-image: radial-gradient(circle, #ffffff 0%, var(--bg-marfil) 100%);
-        }
-        
-        .envelope-bottom p.subtitle {
-            font-size: 0.85rem; letter-spacing: 3px; color: var(--terracota); text-transform: uppercase;
-        }
-        .envelope-bottom h2 {
-            font-family: 'Great Vibes', cursive; font-size: 3.0rem; color: var(--orange-vib);
-            margin: 5px 0; text-align: center; line-height: 1; padding: 0 15px;
-        }
-        .envelope-bottom .companion {
-            font-size: 1rem; font-weight: 600; color: var(--fucsia); margin-top: 5px; font-family: 'Great Vibes', cursive; font-size: 1.5rem;
-        }
-        .open-instructions {
-            margin-top: 25px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;
-            color: #999; animation: pulse 2s infinite;
-        }
-
-        /* Solapa superior (Triángulo hacia abajo) */
-        .flap-wrapper {
-            position: absolute; top: 0; left: 0; width: 100%; height: 65vh;
-            filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1)); /* Sombra para dar efecto 3D */
-            z-index: 10000;
-            transform-origin: top;
-            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-        .flap-shape {
-            width: 100%; height: 100%;
-            background-color: var(--bg-marfil);
-            /* Triángulo en V hacia abajo (llega hasta el 85% del contenedor) */
-            clip-path: polygon(0 0, 100% 0, 50% 85%);
-            background-image: linear-gradient(180deg, var(--bg-marfil) 0%, #f0ead6 100%);
-        }
-        .flap-content {
-            position: absolute; top: 10%; width: 70%; text-align: center; padding-left: 25%;
-        }
-        .flap-content h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4.5rem;
-            color: var(--terracota);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
-        }
-        
-        /* Logo (Reemplazo de flores) */
-        .flap-logo {
-            position: absolute; left: 50%; bottom: 15%; /* Alineado a la punta de la solapa */
-            transform: translate(-50%, 50%); 
-            width: 120px; height: 120px;
-            border-radius: 50%; object-fit: cover;
-            border: 4px solid var(--bg-marfil);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: opacity 0.4s ease;
-        }
-
-        /* Clase de animación al hacer clic */
-        .flap-wrapper.open {
-            transform: rotateX(180deg);
-        }
-        .flap-wrapper.open .flap-logo {
-            opacity: 0; /* Oculta el logo cuando la solapa se levanta */
-        }
-
-        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
-
         /* ================= CONTENIDO PRINCIPAL ================= */
-        #main-content {
-            height: 100vh; overflow-y: auto; overflow-x: hidden;
-            display: none; opacity: 0; transition: opacity 1s ease-in;
-        }
+        #main-content { display: block; position: relative; }
 
-        /* 1. Hero (Bienvenida) */
+        /* 1. Hero (Portada) */
         .hero {
-            position: relative; height: 100vh;
-            display: flex; align-items: center; justify-content: center;
-            text-align: center; color: var(--bg-marfil); overflow: hidden;
+            position: relative; height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; padding-top: 60px;
+            /* Se eliminó el slider y se colocó foto6.jpg como fondo estático */
+            background-image: url('public/images/foto6.jpg');
+            background-size: cover; background-position: center;
         }
-        .slider-bg {
-            position: absolute; top: 0; left: 0; width: 300%; height: 100%;
-            display: flex; animation: slide 20s infinite alternate ease-in-out; z-index: -2;
-        }
-        .slider-bg div {
-            width: 33.333%; height: 100%; background-size: cover; background-position: center;
-        }
-        /* Nuevas Rutas de Fotos */
-        .slide-1 { background-image: url('public/photos/foto1.jpg'); }
-        .slide-2 { background-image: url('public/photos/foto2.jpg'); }
-        .slide-3 { background-image: url('public/photos/foto3.jpg'); }
-        
         .overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            /* Capa superpuesta con tonos cálidos */
-            background: linear-gradient(180deg, rgba(227, 83, 54, 0.4) 0%, rgba(0,0,0,0.6) 100%);
-            z-index: -1;
+            background: rgba(255, 251, 239, 0.65); z-index: 1;
         }
-        @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-66.666%); } }
         
-        .hero-content h1 {
-            font-size: 5.5rem; margin: 10px 0; color: #FFF;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
-            line-height: 1.1;
+        .hero-content { padding: 20px; position: relative; z-index: 2; }
+        .hero-content h1 { font-size: 5.5rem; margin: 15px 0; color: var(--title); line-height: 1; }
+        .romantic-quote {
+            font-size: 1.05rem; font-style: italic; max-width: 600px; margin: 0 auto 20px auto;
+            color: var(--text); line-height: 1.6; font-weight: 500;
         }
-        .hero-content p {
-            font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase;
+        .guest-greeting-hero {
+            display: none; /* Oculto ya que ahora el saludo va en la siguiente sección */
         }
 
-        /* Secciones */
-        section { padding: 80px 20px; text-align: center; }
-        .section-title {
-            color: var(--orange-vib); font-size: 4rem; margin-bottom: 20px;
+        /* ================= BLOQUE DE AGRADECIMIENTO ================= */
+        .agradecimiento-section {
+            background-color: var(--bg); padding: 80px 20px; text-align: center;
+            position: relative; z-index: 2; border-bottom: 1px solid var(--border);
         }
+        .agradecimiento-section p {
+            font-size: 1.15rem; line-height: 1.8; max-width: 700px; margin: 0 auto;
+            color: var(--text); font-weight: 500; font-style: italic;
+        }
+
+        /* ================= FONDO COMPARTIDO (Gran Día hacia abajo) ================= */
+        .bottom-sections-wrapper {
+            position: relative;
+            background-image: url('public/images/villa_victoria_4.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed;
+        }
+        .bottom-sections-wrapper::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 251, 239, 0.88); backdrop-filter: blur(4px); z-index: 1;
+        }
+
+        .transparent-section { position: relative; z-index: 2; padding: 80px 20px; text-align: center; }
+        .section-title { color: var(--title); font-size: 3.5rem; margin-bottom: 20px; line-height: 1; }
 
         /* 2. Fecha, Lugar y Contador */
-        .date-location { background-color: var(--bg-marfil); }
-        .countdown-container {
-            display: flex; justify-content: center; gap: 12px; margin: 40px 0;
-        }
+        .countdown-container { display: flex; justify-content: center; gap: 12px; margin: 40px 0; }
         .time-box {
-            background: var(--bg-marfil);
-            border: 1px solid var(--terracota);
-            color: var(--terracota);
-            padding: 15px 10px; border-radius: 10px; min-width: 75px;
-            box-shadow: 0 4px 15px rgba(227, 83, 54, 0.1);
+            background: var(--bg); border: 1px solid var(--border); color: var(--title);
+            padding: 15px 10px; border-radius: 10px; min-width: 75px; box-shadow: 0 4px 15px rgba(227, 83, 54, 0.1);
         }
         .time-box span { display: block; font-size: 2.2rem; font-family: 'Great Vibes', cursive; line-height: 1; }
-        .time-box p { font-size: 0.75rem; text-transform: uppercase; margin-top: 8px; font-weight: 600;}
+        .time-box p { font-size: 0.75rem; text-transform: uppercase; margin-top: 8px; font-weight: 600; color: var(--text);}
         
         .maps-btn {
-            display: inline-block; background: var(--terracota); color: #FFF; text-decoration: none;
+            display: inline-block; font-family: 'Montserrat', sans-serif; text-decoration: none;
+            background: none; color: var(--btn); border: 2px solid var(--btn); 
             padding: 15px 30px; border-radius: 30px; margin-top: 20px; font-weight: 600;
             box-shadow: 0 4px 15px rgba(227, 83, 54, 0.4); transition: transform 0.3s;
         }
         .maps-btn:hover { transform: translateY(-3px); }
 
         /* 3. Cronograma */
-        .timeline-section { background-color: #FFF; }
         .timeline {
-            max-width: 400px; margin: 0 auto;
-            border-left: 2px solid var(--orange-vib); padding-left: 30px; text-align: left;
+            max-width: 500px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 50px;
         }
-        .event { position: relative; margin-bottom: 40px; }
-        .event::before {
-            content: '♥'; position: absolute; left: -42px; top: 0px;
-            width: 22px; height: 22px; color: var(--fucsia); font-size: 1.2rem; background: #FFF;
-            text-align: center; line-height: 22px;
+        .event { position: relative; display: flex; flex-direction: column; align-items: center; }
+        .event:not(:last-child)::after {
+            content: ''; position: absolute; bottom: -35px; width: 2px; height: 25px; background: var(--border);
         }
-        .event h3 { color: var(--terracota); font-size: 1.3rem; margin-bottom: 5px; }
-        .event span { font-weight: bold; color: var(--text-main); font-size: 0.95rem;}
+        .event-icon {
+            width: 45px; height: 45px; border-radius: 50%; background: var(--bg); border: 2px solid var(--btn); color: var(--btn);
+            display: flex; justify-content: center; align-items: center; font-size: 1.2rem;
+            margin-bottom: 15px; box-shadow: 0 4px 10px rgba(227, 83, 54, 0.15);
+        }
+        .event h3 { color: var(--title); font-size: 1.4rem; margin-bottom: 5px; }
+        .event span { font-weight: bold; color: var(--text); font-size: 1rem; }
 
-        /* 4. RSVP y Dress Code */
-        .rsvp-section { background-color: var(--bg-marfil); }
-        .wsp-btn {
-            display: inline-block; background: #25D366; color: white; text-decoration: none;
-            padding: 15px 35px; font-size: 1.1rem; border-radius: 30px; font-weight: bold;
-            margin: 20px 0 40px 0; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-        }
-        .dress-btn {
-            display: inline-block; background: var(--fucsia); color: white; border: none;
-            padding: 15px 35px; font-size: 1.1rem; border-radius: 30px; font-family: 'Montserrat', sans-serif;
-            font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(216, 27, 96, 0.3);
-        }
-
-        /* 5. Mesa de Regalos */
-        .gifts-section { background-color: #FFF; padding-bottom: 90px; }
-        .gifts-card {
-            background: var(--bg-marfil); border: 2px solid var(--orange-vib);
-            border-radius: 20px; padding: 40px 25px; max-width: 500px; margin: 0 auto;
-        }
-        .gifts-card p { margin-bottom: 20px; line-height: 1.7; color: var(--text-main); }
-        .gifts-card .account { font-weight: bold; color: var(--terracota); font-size: 1.1rem; line-height: 1.8; }
-
-        /* ================= POPUP DRESS CODE ================= */
-        .modal {
-            display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center;
-        }
-        .modal-content {
-            background-color: var(--bg-marfil); padding: 40px 20px 30px 20px; border-radius: 20px;
-            max-width: 90%; width: 400px; text-align: center; position: relative;
-        }
-        .close-btn {
-            position: absolute; top: 15px; right: 20px; font-size: 30px;
-            color: var(--terracota); cursor: pointer; line-height: 1;
-        }
-        .modal-content h3 { color: var(--fucsia); margin-bottom: 10px; font-size: 3.5rem; }
-        .modal-content p { font-size: 0.95rem; margin-bottom: 25px; color: var(--text-main); font-weight: 600; line-height: 1.6;}
-        
-        .scrolling-wrapper { width: 100%; overflow: hidden; border-radius: 15px; position: relative; }
+        /* 4. Dress Code (Ahora es un bloque en el scroll) */
+        .scrolling-wrapper { width: 100%; overflow: hidden; border-radius: 15px; position: relative; max-width: 700px; margin: 0 auto; }
         .scrolling-track { display: flex; width: max-content; animation: scroll-images 15s linear infinite; }
         .scrolling-track img {
-            width: 220px; height: 320px; object-fit: cover; margin-right: 15px;
-            border-radius: 15px; border: 2px solid var(--orange-vib);
+            width: 220px; height: 320px; object-fit: cover; margin-right: 15px; border-radius: 15px; border: 1px solid var(--border);
         }
         @keyframes scroll-images { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
+        /* 5. Mesa de Regalos */
+        .gifts-card {
+            background: rgba(255, 251, 239, 0.95); border: 1px solid var(--border);
+            border-radius: 20px; padding: 40px 25px; max-width: 500px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .gifts-card p { margin-bottom: 20px; line-height: 1.7; color: var(--text); }
+        .gifts-card .account { font-weight: bold; color: var(--botanical); font-size: 1.1rem; line-height: 1.8; }
+
+        /* 6. Asistencia (Google Forms) */
+        .rsvp-section { padding-bottom: 90px; }
+        .wsp-btn {
+            display: inline-block; background: none; color: var(--btn); border: 2px solid var(--btn); 
+            padding: 15px 35px; font-size: 1.1rem; border-radius: 30px; font-family: 'Montserrat', sans-serif;
+            font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(227, 83, 54, 0.3); margin-top: 20px;
+        }
+        .success-msg {
+            display: none; background: rgba(92, 138, 69, 0.1); color: var(--botanical);
+            padding: 15px; border-radius: 10px; font-weight: bold; margin-top: 20px;
+            max-width: 400px; margin-left: auto; margin-right: auto; border: 1px solid var(--botanical);
+        }
+        
     </style>
 </head>
 <body>
 
-    <!-- Pantalla de Error (Falta parámetro en URL) -->
+    <!-- AUDIO DE FONDO -->
+    <audio id="bgMusic" loop>
+        <source src="public/music/todalavida.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- BOTÓN FLOTANTE MÚSICA -->
+    <button id="musicToggle" onclick="toggleMusic()">
+        <i class="fa-solid fa-play" id="musicIcon"></i>
+    </button>
+
+    <!-- MENÚ SUPERIOR -->
+    <nav class="navbar">
+        <div class="nav-brand">Carla <i class="fa-regular fa-heart"></i> Oscar</div>
+        <button class="menu-toggle" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+        <div class="nav-links" id="navLinks">
+            <a href="#inicio" onclick="closeMenu()">Portada</a>
+            <a href="#nosotros" onclick="closeMenu()">Nosotros</a>
+            <a href="#gran-dia" onclick="closeMenu()">El Gran Día</a>
+            <a href="#itinerario" onclick="closeMenu()">Itinerario</a>
+            <a href="#dress-code" onclick="closeMenu()">Dress Code</a>
+            <a href="#regalos" onclick="closeMenu()">Regalos</a>
+            <a href="#asistencia" onclick="closeMenu()">Asistencia</a>
+        </div>
+    </nav>
+
+    <!-- PANTALLA DE ERROR -->
     <div id="error-screen">
-        <p>⚠️<br><br>La invitación es personalizada, este es un enlace directo.<br>Por favor, solicita tu enlace a los novios.</p>
+        <p>⚠️<br><br>La invitación es personalizada.<br>Por favor, solicita tu enlace directo a los novios.</p>
     </div>
 
-    <!-- PANTALLA DEL SOBRE (Basado en la imagen referencial) -->
-    <div id="envelope-screen">
-        <!-- Fondo del sobre (Abajo de la solapa) -->
-        <div class="envelope-bottom">
-            <p class="subtitle">Invitación especial para</p>
-            <h2 id="guest-name">Invitado</h2>
-            <div id="companion-name" class="companion"></div>
-            <p class="open-instructions">Toca el sobre para abrir</p>
-        </div>
-
-        <!-- Solapa del sobre -->
-        <div class="flap-wrapper" onclick="openEnvelope()">
-            <!-- Forma triangular (clip-path) -->
-            <div class="flap-shape">
-                <div class="flap-content">
-                    <h1 class="cursive-title">Nuestra Boda</h1>
-                </div>
-            </div>
-            <!-- Logo reemplazando las flores en la punta -->
-            <img src="public/logo/logo_oscarla.jpg" class="flap-logo" alt="Sello Boda">
-        </div>
-    </div>
-
-    <!-- CONTENIDO PRINCIPAL -->
+    <!-- CONTENIDO PRINCIPAL SCROLLEABLE -->
     <div id="main-content">
         
-        <!-- Bienvenida -->
-        <section class="hero">
-            <div class="slider-bg">
-                <div class="slide-1"></div>
-                <div class="slide-2"></div>
-                <div class="slide-3"></div>
-            </div>
+        <!-- 1. Bienvenida (Portada) -->
+        <section id="inicio" class="hero">
             <div class="overlay"></div>
             <div class="hero-content">
-                <p>¡Travesura Realizada!</p>
-                <h1 class="cursive-title">Oscar & Carla</h1>
-                <p>23 . 01 . 2027</p>
+                <p style="font-size: 1.8rem; font-weight: 1000; letter-spacing: 2px; margin-bottom:10px;">¡Nos Casamos!</p><br>
+                <h1 class="cursive-title">Oscar<br>
+                    & <br> 
+                     Carla</h1>
+                <p class="romantic-quote" style="font-size: 1.2rem; font-weight: 1000;">
+                    "Con la bendición de Dios, nuestros padres, y la aprobación del mismísimo Sombrero Seleccionador, ¡nos casamos!"
+                </p>
+                <p style="font-weight: bold; font-size: 2rem; letter-spacing: 3px;">23 . 01 . 2027</p>
             </div>
         </section>
 
-        <!-- Fecha, Lugar y Contador -->
-        <section class="date-location">
-            <h2 class="section-title cursive-title">El Gran Día</h2>
-            <p style="font-weight: 600; color: var(--text-main);">Queremos compartir nuestro juramento inquebrantable! el inicio de nuestra mágica historia contigo.</p>
-            
-            <div class="countdown-container">
-                <div class="time-box"><span id="days">00</span><p>Días</p></div>
-                <div class="time-box"><span id="hours">00</span><p>Hrs</p></div>
-                <div class="time-box"><span id="minutes">00</span><p>Min</p></div>
-                <div class="time-box"><span id="seconds">00</span><p>Seg</p></div>
-            </div>
+        <!-- WRAPPER DE FONDO COMPARTIDO -->
+        <div class="bottom-sections-wrapper">
 
-            <h3 style="margin-top: 40px; color: var(--terracota); font-size: 1.4rem;">Villa Victoria</h3>
-            <p style="font-size: 0.95rem; color: #777;">Pachacamac</p>
-            <a href="https://maps.app.goo.gl/gMvfanpEZq5vjdbR8" target="_blank" class="maps-btn">📍 Así puedes llegar</a>
-        </section>
+            <!-- 2. NUEVO BLOQUE: Agradecimiento -->
+            <section id="nosotros" class="transparent-section" style="font-size: 1rem; font-weight: 600">
+                <h2 id="agradecimiento-title" class="section-title cursive-title" style="font-size: 2rem; margin-bottom: 15px;">Estimado Invitado</h2>                
+                <p class="romantic-quote" style="font-size: 1.2rem; font-weight: 1000; margin-top: 20px;"><em>
+                    Nuestra felicidad no estaría completa sin las personas que han iluminado nuestro camino,
+                    y queremos que nos acompañes en este día tan especial para nosotros.<br><br>
+                    Juramos solemnemente que nuestras intenciones no son buenas... <br> ¡Son de celebrar a lo Grande!
+                </em></p>
+            </section>
 
-        <!-- Cronograma -->
-        <section class="timeline-section">
-            <h2 class="section-title cursive-title">Itinerario</h2>
-            <div class="timeline">
-                <div class="event">
-                    <h3>Ceremonia Religiosa</h3>
-                    <span>15:00 hrs</span>
-                </div>
-                <div class="event">
-                    <h3>Ceremonia Civil</h3>
-                    <span>16:00 hrs</span>
-                </div>
-                <div class="event">
-                    <h3>Recepción y Cena</h3>
-                    <span>16:30 hrs</span>
-                </div>
-                <div class="event">
-                    <h3>¡Hora Loca!</h3>
-                    <span>20:00 hrs</span>
-                </div>
-                <div class="event">
-                    <h3>Fin de la Fiesta</h3>
-                    <span>01:00 hrs</span>
-                    <p style="font-size: 0.9rem; margin-top:5px; color: var(--orange-vib); font-weight: bold;">¡Gracias por acompañarnos!</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- RSVP y Dress Code -->
-        <section class="rsvp-section">
-            <h2 class="section-title cursive-title">Confirmar Asistencia</h2>
-            <p style="font-weight: 600;">Por favor, confirma tu asistencia para considerarte en este día tan especial.</p>
-            
-            <a href="https://wa.me/51999999999?text=¡Hola%20Oscar%20y%20Carla!%20Confirmo%20mi%20asistencia%20a%20su%20boda%20el%2023%20de%20enero." target="_blank" class="wsp-btn">
-                Confirmar Asistencia
-            </a>
-            <br>
-            
-            <button class="dress-btn" onclick="openModal()">Dress Code</button>
-        </section>
-
-        <!-- Mesa de Regalos -->
-        <section class="gifts-section">
-            <h2 class="section-title cursive-title">Mesa de Regalos</h2>
-            <div class="gifts-card">
-                <p>Tu presencia es nuestro mejor regalo. Si además quieres tener un detalle con nosotros, cualquier aporte para nuestra luna de miel será recibido con muchísimo cariño.</p>
-                <div class="account">
-                    <p>Cuenta BBVA: 0011 ABC</p>
-                    <p>CCI BBVA: 0023 DEF</p>
+            <!-- 3. Fecha y Lugar -->
+            <section id="gran-dia" class="transparent-section">
+                <h2 class="section-title cursive-title">El Gran Día</h2>
+                <div class="countdown-container" style="font-family: 'Montserrat', sans-serif;">
+                    <div class="time-box"><span id="days">00</span><p>Días</p></div>
+                    <div class="time-box"><span id="hours">00</span><p>Hrs</p></div>
+                    <div class="time-box"><span id="minutes">00</span><p>Min</p></div>
+                    <div class="time-box"><span id="seconds">00</span><p>Seg</p></div>
                 </div>
-            </div>
-        </section>
+                <h3 style="margin-top: 40px; color: var(--title); font-size: 1.6rem;">Villa Victoria</h3>
+                <p style="font-size: 1rem; color: var(--text); font-weight: bold;">Pachacamac</p>
+                <a href="https://maps.app.goo.gl/gMvfanpEZq5vjdbR8" target="_blank" class="maps-btn">Como llegar</a>
+            </section>
 
-    </div>
-
-    <!-- POPUP DRESS CODE -->
-    <div id="dressModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 class="cursive-title">Dress Code</h3>
-            <p>Formal / Elegante<br>
-            <span style="color: var(--terracota); font-size: 0.85rem;"><em>Por favor, evitar el color blanco o similares en mujeres.</em></span></p>
-            
-            <!-- Nuevas rutas de imágenes de vestidos -->
-            <div class="scrolling-wrapper">
-                <div class="scrolling-track">
-                    <img src="public/vestido/01.svg" alt="Referencia 1">
-                    <img src="public/vestido/02.svg" alt="Referencia 2">
-                    <img src="public/vestido/03.svg" alt="Referencia 3">
-                    <!-- Duplicadas para el scroll infinito -->
-                    <img src="public/vestido/01.svg" alt="Referencia 1">
-                    <img src="public/vestido/02.svg" alt="Referencia 2">
-                    <img src="public/vestido/03.svg" alt="Referencia 3">
+            <!-- 4. Cronograma -->
+            <section id="itinerario" class="transparent-section" style="border-top: 1px solid rgba(232, 217, 198, 0.5);">
+                <h2 class="section-title cursive-title">Itinerario</h2>
+                <div class="timeline">
+                    <div class="event">
+                        <div class="event-icon"><i class="fa-solid fa-church"></i></div>
+                        <h3>Ceremonia Religiosa</h3>
+                        <span style="font-family: 'Montserrat', sans-serif; font-weight: 550;">15:00 hrs</span>
+                    </div>
+                    <div class="event">
+                        <div class="event-icon"><i class="fa-solid fa-book"></i></div>
+                        <h3>Ceremonia Civil</h3>
+                        <span style="font-family: 'Montserrat', sans-serif; font-weight: 550;">16:00 hrs</span>
+                    </div>
+                    <div class="event">
+                        <div class="event-icon"><i class="fa-solid fa-martini-glass-citrus"></i></div>
+                        <h3>Cóctel de Bienvenida</h3>
+                        <span style="font-family: 'Montserrat', sans-serif; font-weight: 550;">16:30 hrs</span>
+                    </div>
+                    <div class="event">
+                        <div class="event-icon"><i class="fa-solid fa-utensils"></i></div>
+                        <h3>Recepción y Cena</h3>
+                        <span style="font-family: 'Montserrat', sans-serif; font-weight: 550;">17:00 hrs</span>
+                    </div>
+                    <div class="event">
+                        <div class="event-icon"><i class="fa-solid fa-music"></i></div>
+                        <h3>¡Hora Loca!</h3>
+                        <span style="font-family: 'Montserrat', sans-serif; font-weight: 550;">20:00 hrs</span>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
+            </section>
+
+            <!-- 5. Dress Code (Ahora integrado en el scroll) -->
+            <section id="dress-code" class="transparent-section" style="border-top: 1px solid rgba(232, 217, 198, 0.5);">
+                <h2 class="section-title cursive-title">Vestimenta</h2>
+                <!--p style="font-weight: bold; font-size: 1.1rem;">Formal / Elegante</p-->
+                <p style="margin-bottom: 15px; font-weight: bold;"><em>
+                    - Hombres en traje, corbata opcional<br>
+                    - Mujeres en vestido midi o largo en colores vivos con tacos cómodos para jardín, evitar blanco, marfil o parececidos.
+                    </em></p>
+                
+                <div class="scrolling-wrapper">
+                    <div class="scrolling-track">
+                        <img src="public/images/vestidos.png" alt="Referencia 1">
+                        <img src="public/images/trajes.png" alt="Referencia 2">
+                        <img src="public/images/vestidos.png" alt="Referencia 1">
+                        <img src="public/images/trajes.png" alt="Referencia 2">
+                    </div>
+                </div>
+                <p style="margin-top: 15px; font-weight: bold;"><em>
+                    Gracias por ayudarnos a crear la atmósfera con tu estilo y elegancia.<br>
+                    ¡Nos vemos en la pista de baile!</em></p>
+            </section>
+
+            <!-- 6. Contribuciones -->
+            <section id="regalos" class="transparent-section" style="border-top: 1px solid rgba(232, 217, 198, 0.5);">
+                <h2 class="section-title cursive-title">Contribuciones</h2>
+                <div class="gifts-card">
+                    <p>Tu presencia es nuestro mejor regalo. Si además quieres tener un detalle con nosotros, cualquier aporte para nuestra luna de miel será recibido con muchísimo cariño.</p>
+                    <div class="account">
+                        <p>Cuenta BBVA: 0011 ABC</p>
+                        <p>CCI BBVA: 0023 DEF</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. Confirmar Asistencia (Al final y vinculado a Google Forms) -->
+            <section id="asistencia" class="transparent-section rsvp-section" style="border-top: 1px solid rgba(232, 217, 198, 0.5);">
+                <h2 class="section-title cursive-title">Confirmar Asistencia</h2>
+                <p style="font-weight: 600;">¡Gracias por ser parte de nuestra aventura!<br>Confirma tu asistencia hasta el 30 de noviembre.</p>
+                
+                <!-- Iframe oculto para evitar que la página recargue al enviar form -->
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { document.getElementById('success-msg').style.display='block'; }"></iframe>
+                
+                <!-- Formulario conectado a Google Forms (action usa formResponse) -->
+                <form action="https://docs.google.com/forms/d/e/1FAIpQLSf4oPghZEFBfe_3VWN2Q_YcEo5edU97EyP8ulBbJAHm2cerVg/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+                    <!-- Inputs ocultos que reciben los datos de la URL -->
+                    <input type="hidden" id="entry_invitado" name="entry.74825387" value="">
+                    <input type="hidden" id="entry_acompanante" name="entry.71986889" value="">
+                    
+                    <button type="submit" class="wsp-btn">Enviar Confirmación</button>
+                </form>
+                
+                <!-- Mensaje de éxito -->
+                <div id="success-msg" class="success-msg">
+                    <i class="fa-solid fa-check-circle"></i> ¡Tu reserva se ha realizado con éxito!
+                </div>
+            </section>
+
+        </div> <!-- Cierre del wrapper de fondo -->
+    </div> <!-- Cierre del main-content -->
 
     <!-- SCRIPTS -->
     <script>
-        // VALIDACIÓN DE URL (Nombres)
+        // Variables globales
+        let submitted = false; // Variable para el formulario
+        let audio = document.getElementById("bgMusic");
+        let isPlaying = false;
+
+        // Lógica del Menú Responsive
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+        function closeMenu() {
+            document.getElementById("navLinks").classList.remove("active");
+        }
+
+        // Lógica del Reproductor de Música
+        function toggleMusic() {
+            let icon = document.getElementById("musicIcon");
+            if (isPlaying) {
+                audio.pause();
+                icon.classList.remove("fa-pause");
+                icon.classList.add("fa-play");
+            } else {
+                audio.play();
+                icon.classList.remove("fa-play");
+                icon.classList.add("fa-pause");
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // VALIDACIÓN DE URL Y ASIGNACIÓN AL FORMULARIO
         document.addEventListener("DOMContentLoaded", () => {
             const params = new URLSearchParams(window.location.search);
             const invitado = params.get('invitado');
             const acompanante = params.get('acompanante');
 
             if (!invitado) {
-                document.getElementById('envelope-screen').style.display = 'none';
+                // Bloquea la web si no hay invitado en el link
+                document.getElementById('main-content').style.display = 'none';
+                document.querySelector('.navbar').style.display = 'none';
+                document.getElementById('musicToggle').style.display = 'none';
                 document.getElementById('error-screen').style.display = 'flex';
             } else {
-                document.getElementById('guest-name').innerText = capitalizarTitulo(invitado);
+                // Generar texto para el bloque de agradecimiento
+                let saludoText = "Hola " + capitalizarTitulo(invitado);
                 if (acompanante) {
-                    document.getElementById('companion-name').innerText = "& " + capitalizarTitulo(acompanante);
+                    saludoText = "Hola " + capitalizarTitulo(invitado) + " y " + capitalizarTitulo(acompanante);
                 }
+                document.getElementById('agradecimiento-title').innerText = saludoText;
+
+                // Asignar parámetros al formulario oculto
+                document.getElementById('entry_invitado').value = capitalizarTitulo(invitado);
+                // Si no hay acompañante, se envía un guión
+                document.getElementById('entry_acompanante').value = capitalizarTitulo(acompanante) ? capitalizarTitulo(acompanante) : "-";
             }
         });
 
@@ -424,33 +441,6 @@
                 .split(' ')
                 .map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1))
                 .join(' ');
-        }
-
-        // ANIMACIÓN DEL SOBRE
-        function openEnvelope() {
-            const wrapper = document.querySelector('.flap-wrapper');
-            const envelopeScreen = document.getElementById('envelope-screen');
-            const content = document.getElementById('main-content');
-            
-            // Paso 1: Levanta la solapa del sobre
-            wrapper.classList.add('open');
-            
-            // Paso 2: Fade Out a toda la pantalla del sobre
-            setTimeout(() => {
-                envelopeScreen.style.opacity = '0';
-                
-                // Paso 3: Muestra el contenido de la web
-                setTimeout(() => {
-                    envelopeScreen.style.display = 'none';
-                    content.style.display = 'block';
-                    document.body.style.overflow = 'auto'; // Activa scroll web
-                    
-                    // Fade In web
-                    setTimeout(() => {
-                        content.style.opacity = '1';
-                    }, 50);
-                }, 1000);
-            }, 600); // 600ms de espera para admirar la animación de la solapa[cite: 1]
         }
 
         // CONTADOR REGRESIVO
@@ -473,17 +463,9 @@
 
             if (distance < 0) {
                 clearInterval(countdownFunction);
-                document.querySelector(".countdown-container").innerHTML = "<h3 style='color: var(--terracota); font-family: \"Great Vibes\", cursive; font-size: 3rem;'>¡Llegó el gran día!</h3>";
+                document.querySelector(".countdown-container").innerHTML = "<h3 style='color: var(--title); font-family: \"Great Vibes\", cursive; font-size: 3rem;'>¡Llegó el gran día!</h3>";
             }
         }, 1000);
-
-        // MODAL DRESS CODE
-        const modal = document.getElementById("dressModal");
-        function openModal() { modal.style.display = "flex"; }
-        function closeModal() { modal.style.display = "none"; }
-        window.onclick = function(event) {
-            if (event.target == modal) { modal.style.display = "none"; }
-        }
     </script>
 </body>
 </html>
