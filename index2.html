@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="es" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff8ee">
+  <meta name="description" content="Carla y Oscar se casan el 23 de enero de 2027. Conoce todos los detalles de nuestra celebración.">
+  <title>Carla & Oscar | Nuestra boda · 23.01.2027</title>
+  <link rel="icon" href="public/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="preload" href="public/images/novios.jpg" as="image" fetchpriority="high">
+  <script>document.documentElement.classList.replace('no-js','js');</script>
+  
+  <style>
+    :root {
+      --marfil:#fff8ee; --papel:#fffcf6; --tinta:#342722; --muted:#715b51;
+      --coral:#F26A5E; --naranja:#F47A20; --mango:#F7B733;
+      --durazno:#F8C3A5; --fucsia:#D81B60; --orquidea:#E96BA8;
+      --hoja:#5C8A45; --oliva:#A9B66A;
+      --vino:#B33912; --rojo:#a84340; --linea:#eeddd1;
+      --shadow:0 18px 46px rgba(102,58,39,.11);
+      --nav-h:76px;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --script:'Great Vibes','Brush Script MT',cursive;
+      --sans:'Montserrat',Arial,sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 14px)}
+    body{margin:0;overflow-x:hidden;background:var(--marfil);color:var(--tinta);font-family:var(--serif);font-size:clamp(1.15rem,1.2vw + .9rem,1.45rem);line-height:1.5}
+    button,a{touch-action:manipulation}
+    button{font:inherit}
+    a{color:inherit}
+    img{display:block;max-width:100%;height:auto}
+    :focus-visible{outline:3px solid var(--fucsia);outline-offset:4px}
+    [hidden]{display:none!important}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .icon{display:inline-block;width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+    .cursive{font-family:var(--script);font-weight:400;line-height:1.17}
+    .eyebrow{font-family:var(--sans);font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:var(--hoja)}
+    .container{width:min(100% - 40px,1050px);margin-inline:auto}
+    .center{text-align:center}
+    .script-heading{font-family:var(--script);font-size:clamp(3.65rem,7.4vw,6.7rem);font-weight:400;line-height:1.17;color:var(--vino);margin:10px 0 16px;overflow-wrap:anywhere}
+    .section{position:relative;isolation:isolate;padding:clamp(70px,9vw,114px) 0;overflow:hidden}
+    .section + .section{border-top:0}
+    .section-copy{max-width:680px;margin:0 auto;font-size:clamp(1.32rem,2vw,1.72rem);line-height:1.55}
+    .section-copy + .section-copy{margin-top:25px}
+    .floral{position:absolute;z-index:-1;pointer-events:none;user-select:none;max-width:none;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(79,53,31,.08))}
+    .floral.tl{top:-34px;left:-75px;width:clamp(180px,28vw,350px)}
+    .floral.tr{top:-40px;right:-78px;width:clamp(170px,25vw,320px)}
+    .floral.bl{bottom:-90px;left:-65px;width:clamp(185px,27vw,330px)}
+    .floral.br{bottom:-85px;right:-65px;width:clamp(200px,30vw,385px)}
+    .floral.soft{opacity:.72}
+    .floral.faint{opacity:.43}
+    
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;min-height:52px;padding:14px 27px;border:1.5px solid var(--vino);border-radius:999px;font:600 .86rem/1.3 var(--sans);text-decoration:none;cursor:pointer;transition:background .18s,color .18s,transform .18s,box-shadow .18s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-outline{color:var(--vino);background:rgba(255,252,246,.75);box-shadow:0 8px 20px rgba(145,61,56,.1)}
+    .btn-outline:hover{background:#fff0e7}
+    .btn-primary{background:var(--vino);border-color:var(--vino);color:#fff;box-shadow:0 11px 24px rgba(145,61,56,.19)}
+    .btn-primary:hover{background:#76312f}
+    .btn:disabled{opacity:.65;cursor:wait;transform:none}
+
+    /* Barra principal */
+    .navbar{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:var(--nav-h);padding:9px max(20px,calc((100vw - 1200px)/2));background:rgba(255,248,238,.95);border-bottom:1px solid rgba(145,61,56,.11);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+    .brand{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-family:var(--script);font-size:clamp(1.8rem,2.6vw,2.45rem);line-height:1;color:var(--vino);white-space:nowrap}
+    .brand .icon{width:27px;height:27px;stroke-width:2.3}
+    .nav-links{display:flex;align-items:center;gap:clamp(11px,1.7vw,23px)}
+    .nav-links a{font:600 .69rem/1.4 var(--sans);letter-spacing:.055em;text-transform:uppercase;text-decoration:none;color:#68463d;white-space:nowrap;padding:11px 0}
+    .nav-links a:hover{color:var(--fucsia)}
+    .menu-toggle{display:none;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid var(--linea);border-radius:12px;background:var(--papel);color:var(--vino);cursor:pointer}
+
+    /* Portada reestructurada */
+    .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:min(810px,calc(100svh - var(--nav-h)));background:var(--marfil);overflow:hidden}
+    .hero-copy{position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:95px clamp(24px,5vw,82px);text-align:center;isolation:isolate;background:radial-gradient(ellipse at 10% 5%,rgba(248,195,165,.52),transparent 43%),radial-gradient(ellipse at 100% 100%,rgba(247,183,51,.13),transparent 50%),var(--marfil)}
+    .hero-copy::before{content:"";position:absolute;inset:24px;border:1px solid rgba(145,61,56,.23);border-radius:180px 180px 14px 14px;z-index:-1}
+    .hero-copy .floral{z-index:-1}
+    .hero h1{margin:0;font-family:var(--script);font-weight:400;font-size:clamp(5rem,8vw,9rem);line-height:.89;color:var(--vino);text-shadow:0 3px 9px rgba(255,248,238,.4)}
+    .hero h1 span{display:block}
+    .hero h1 .amp{font-size:.67em;line-height:.9;margin:12px 0}
+    .hero-quote{max-width:440px;font-size:clamp(1.17rem,1.9vw,1.55rem);line-height:1.42;font-style:italic;margin:0 0 200px; color: var(--fucsia); font-weight: 800; text-shadow: -1px -1px 0 var(--marfil), 1px -1px 0 var(--marfil), -1px 1px 0 var(--marfil), 1px 1px 0 var(--marfil)
+      , 0px 3px 10px rgba(255,248,238,0.9);}
+    .hero-date{font-weight:600;letter-spacing:.22em;font-size:clamp(1.55rem,2.9vw,2.2rem);margin:7px 0 22px;white-space:nowrap}
+    .hero-image{position:relative;min-height:620px;background:var(--durazno)}
+    .hero-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+    .hero-image::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(90,41,20,.07),transparent 20%),linear-gradient(0deg,rgba(53,29,26,.22),transparent 32%);pointer-events:none}
+    .hero-photo-caption{position:absolute;bottom:32px;right:30px;z-index:1;color:white;text-shadow:0 2px 14px rgba(0,0,0,.55);font:600 1.8rem var(--sans);letter-spacing:.22em}
+
+    /* Saludo */
+    .welcome{background:linear-gradient(180deg,#fffcf5,#fff4e8)}
+    .welcome .container{position:relative;max-width:740px}
+    .welcome .script-heading{font-size:clamp(3.3rem,6.4vw,5.7rem)}
+    .welcome p{font-style:italic;font-weight:500}
+    .welcome .second-message{margin-top:30px;color:#6a4b41}
+    .flourish{display:flex;justify-content:center;gap:8px;margin:35px 0 5px;color:var(--coral)}
+    .flourish::before,.flourish::after{content:"";width:55px;height:1px;background:var(--coral);align-self:center}
+
+    /* Cuenta regresiva / lugar */
+    .day{background:radial-gradient(circle at 5% 0%,rgba(248,195,165,.3),transparent 40%),linear-gradient(#fff8ee,#fff2e5)}
+    .countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;width:min(100%,570px);margin:28px auto 48px}
+    .time-box{padding:19px 8px 15px;background:rgba(255,252,246,.85);border:1px solid #e9d6c3;border-radius:16px;box-shadow:0 8px 19px rgba(138,78,57,.075)}
+    .time-box:nth-child(1){border-top:4px solid var(--fucsia)}
+    .time-box:nth-child(2){border-top:4px solid var(--coral)}
+    .time-box:nth-child(3){border-top:4px solid var(--naranja)}
+    .time-box:nth-child(4){border-top:4px solid var(--mango)}
+    .time-num{display:block;font:400 clamp(2rem,4.3vw,3rem)/1 var(--script);color:var(--vino);font-variant-numeric:tabular-nums}
+    .time-label{display:block;margin-top:10px;font:600 .67rem var(--sans);letter-spacing:.1em;text-transform:uppercase}
+    .venue{width:min(100%,780px);display:grid;grid-template-columns:1fr .96fr;align-items:center;gap:clamp(25px,4vw,58px);margin:auto;padding:25px;background:var(--papel);border:1px solid #f0dbca;border-radius:24px;box-shadow:var(--shadow);text-align:left}
+    .venue-photo{width:100%;min-height:270px;height:100%;object-fit:cover;border-radius:16px;background:#e7dac7}
+    .venue h3{font-size:clamp(2.3rem,4vw,3.3rem);color:var(--vino);line-height:1;margin:10px 0 8px;font-weight:600}
+    .venue p{margin:0 0 23px;color:var(--muted)}
+
+    /* Itinerario */
+    .itinerary{background:linear-gradient(180deg,#fffaf2,#fff9ef)}
+    .timeline{position:relative;display:grid;gap:0;width:min(100%,720px);margin:36px auto 0;list-style:none;padding:0 0 0 20px}
+    .timeline::before{content:"";position:absolute;left:calc(20px + 28px);top:38px;bottom:48px;width:2px;background:linear-gradient(var(--coral),var(--mango),var(--hoja));opacity:.5}
+    .event{display:grid;grid-template-columns:58px 1fr;gap:24px;align-items:center;position:relative;min-height:105px;text-align:left}
+    .event-icon{position:relative;z-index:2;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;border:2px solid var(--vino);background:var(--papel);color:var(--vino);box-shadow:0 5px 13px rgba(145,61,56,.07)}
+    .event h3{margin:0;color:var(--vino);font-size:clamp(1.55rem,2.8vw,2rem);font-weight:600;line-height:1.2}
+    .event time{display:block;font:600 .9rem var(--sans);margin-top:5px}
+
+    /* Vestimenta */
+    .dress{background:radial-gradient(circle at 100% 0%,rgba(233,107,168,.13),transparent 40%),#fff7ec}
+    .look-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;width:min(100%,840px);margin:0 auto}
+    .look-card{margin:0;background:var(--papel);padding:12px;border:1px solid var(--linea);border-radius:20px;box-shadow:0 10px 25px rgba(102,58,39,.065)}
+    .look-card img{width:100%;height:clamp(220px,34vw,410px);object-fit:cover;object-position:center top;border-radius:12px;background:#f6e6d8}
+    .look-card figcaption{display:grid;gap:9px;font-family:var(--serif);font-size:1.15rem;font-weight:400;text-align:center;padding:15px 11px 13px;line-height:1.28}
+    .look-card figcaption strong{font-family:var(--sans);color:var(--vino);font-size:.84rem}
+    .look-card figcaption span{color:var(--tinta)}
+    .dress-note{max-width:690px;margin:20px auto 0;font-style:italic}
+
+    /* Regalos */
+    .gifts{background:linear-gradient(145deg,#fff3e5 0%,#fffaf1 60%,#fff2e9 100%)}
+    .gifts-card{max-width:640px;margin:20px auto 0;padding:clamp(30px,5vw,54px);border:1px solid #eddbce;border-radius:26px;background:rgba(255,252,247,.93);box-shadow:var(--shadow)}
+    .gifts-card > .icon{width:40px;height:40px;margin-bottom:12px;color:var(--vino)}
+    .gifts-card p{margin:0 auto 20px;max-width:485px}
+    .account{display:flex;align-items:center;justify-content:space-between;gap:10px;width:min(100%,440px);margin:12px auto 0;text-align:left;padding:12px 14px;border-radius:12px;background:#ffefe3;font-family:var(--sans);font-size:clamp(.72rem,1.8vw,.88rem);font-weight:600}
+    .account strong{display:block;font-size:.63rem;letter-spacing:.08em;color:var(--muted);margin-bottom:3px}
+    .copy-btn{width:38px;height:38px;display:grid;place-items:center;border:1px solid #d6b5a8;color:var(--vino);background:var(--papel);border-radius:10px;cursor:pointer;flex:none}
+    .copy-btn:hover{background:#ffe5d9}
+    .copy-hint{font:500 .7rem var(--sans);color:var(--muted);margin:13px 0 0!important;min-height:1.4em}
+
+    /* Confirmación adaptada a la colorimetría oficial */
+    .rsvp{background:radial-gradient(ellipse at 50% 100%,rgba(247,183,51,.28),transparent 60%),linear-gradient(180deg,#fff9ed,#ffe9db);padding-bottom:clamp(95px,12vw,150px)}
+    .rsvp .section-copy{max-width:600px}
+    .rsvp .btn{min-width:min(100%,300px); margin-top:20px;}
+    .rsvp-message{max-width:550px;margin:20px auto 0;padding:14px 18px;border:1.5px solid var(--coral);border-radius:16px;color:var(--tinta);background:rgba(255,252,246,.9);font-family:var(--sans);font-size:0.95rem;font-weight:600;box-shadow:0 8px 20px rgba(92,138,69,.12)}
+    .rsvp-message.warning{background:rgba(255,246,225,.95);border-color:var(--naranja);color:var(--vino)}
+    
+    .footer{background:#fff4e6;color:var(--vino);text-align:center;padding:35px 20px 45px;border-top:1px solid #ead5c5}
+    .footer .brand{justify-content:center;font-size:2.5rem}
+    .footer small{display:block;margin-top:9px;font:500 .69rem var(--sans);letter-spacing:.19em}
+    .footer .icon{color:var(--coral)}
+
+    /* Botón de Música y Tooltip transparente con texto delineado */
+    .music-toggle{position:fixed;z-index:1010;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:center;width:56px;height:56px;border:1px solid rgba(145,61,56,.19);border-radius:50%;background:rgba(255,250,240,.95);color:var(--vino);box-shadow:0 9px 30px rgba(70,37,23,.16);backdrop-filter:blur(8px);cursor:pointer}
+    .music-toggle .icon{width:23px;height:23px}
+    .music-toggle[aria-pressed="true"]{background:var(--vino);color:#fff}
+    
+    .music-tooltip {
+      position: absolute;
+      bottom: calc(10%);
+      right: 100%;
+      width: max-content;
+      max-width: 240px;
+      padding: 0;
+      background: transparent;
+      color: var(--vino);
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      line-height: 1.1;
+      text-align: right;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+      text-shadow: 
+        -1.5px -1.5px 0 #fff8ee, 
+         1.5px -1.5px 0 #fff8ee, 
+        -1.5px  1.5px 0 #fff8ee, 
+         1.5px  1.5px 0 #fff8ee,
+         0px 2px 8px rgba(255,248,238,0.95);
+    }
+    .music-tooltip.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* Pantalla de Error */
+    .error-screen{display:none;min-height:100svh;align-items:center;justify-content:center;flex-direction:column;gap:18px;padding:30px;text-align:center;background:radial-gradient(circle at top,#ffe0cc,var(--marfil) 65%)}
+    .error-screen .script-heading{margin:0}
+    .error-screen p{max-width:510px;margin:0}
+    
+    /* Mostrar web directamente siempre */
+    .js.invalid #main-content,.js.invalid .navbar,.js.invalid .music-toggle,.js.invalid .footer{display:none!important}
+    .js.invalid .error-screen{display:flex}
+
+    /* Navegación responsiva */
+    .navbar{padding-inline:max(18px,calc((100vw - 1080px)/2));gap:clamp(16px,2vw,30px)}
+    .nav-links{gap:3px;flex-wrap:nowrap}
+    .nav-links a{padding:11px 10px;border-radius:999px;transition:background-color .2s,color .2s,box-shadow .2s}
+    .nav-links a.active,.nav-links a[aria-current="location"]{background:#fce3d9;color:var(--vino);box-shadow:inset 0 0 0 1px rgba(145,61,56,.13)}
+    .nav-links a:hover{background:#fff0e8}
+
+    html{scroll-padding-top:var(--nav-h);scroll-snap-type:y proximity}
+    main > section{scroll-snap-align:start;scroll-margin-top:var(--nav-h)}
+    .section{min-height:calc(100svh - var(--nav-h));display:flex;align-items:center;justify-content:center;padding-block:clamp(45px,6vh,88px)}
+    .hero{height:calc(100svh - var(--nav-h));min-height:0;max-height:none}
+    .hero-copy{min-height:0;padding:clamp(18px,3vh,40px) clamp(20px,3vw,50px)}
+    .hero-copy::before{inset:clamp(10px,2vh,22px)}
+
+    /* Despedida */
+    .farewell{min-height:calc(100svh - var(--nav-h));background:#52392e url('public/images/local_villa_victoria.jpg') center / cover no-repeat;color:#fff;isolation:isolate;text-shadow:0 2px 15px rgba(22,15,12,.3)}
+    .farewell::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(155deg,rgba(32,30,23,.57),rgba(47,30,29,.67) 58%,rgba(58,27,37,.75))}
+    .farewell-content{max-width:800px}
+    .farewell-eyebrow{font:600 .7rem var(--sans);letter-spacing:.2em;text-transform:uppercase}
+    .farewell h2{font-size:clamp(4.7rem,11vw,8rem);margin:clamp(10px,3vh,25px) 0 4px;color:#fff}
+    .farewell-rule{font-size:2.5rem;color:#fff;margin:0 auto 18px}
+    .farewell-kids{font:600 .86rem var(--sans);letter-spacing:.16em;text-transform:uppercase;margin:0 0 13px}
+    .farewell h3{font-size:clamp(2rem,4.5vw,3.3rem);font-weight:600;margin:0 0 12px;color:#fff}
+    .farewell-message{font-size:clamp(1.5rem,3vw,2.2rem);font-style:italic;line-height:1.3;margin:0 auto 28px;max-width:620px}
+    .farewell-last{font-size:1.18rem;margin:0 auto;max-width:580px}
+
+    @media(max-width:850px){
+      :root{--nav-h:68px}
+      .menu-toggle{display:flex}
+      .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(255,248,238,.98);border-bottom:1px solid #ead2c1;box-shadow:0 15px 20px rgba(52,39,34,.12);padding:8px 20px 18px;max-height:calc(100svh - var(--nav-h));overflow-y:auto}
+      .nav-links.open{display:flex}
+      .nav-links a{font-size:.76rem;padding:13px 15px;border-bottom:0;border-radius:12px}
+    }
+    @media(max-width:680px){
+      .container{width:min(100% - 34px,620px)}
+      .section{padding:68px 0}
+      .script-heading{font-size:clamp(3.6rem,12vw,5.2rem)}
+      .hero{display:block;position:relative;height:calc(100svh - var(--nav-h));min-height:0;background:#bc7d5e}
+      .hero-image{position:absolute;inset:0;min-height:0}
+      .hero-image img{object-position:center 43%}
+      .hero-image::after{background:linear-gradient(180deg,rgba(255,239,218,.23) 0%,rgba(255,246,232,.42) 34%,rgba(255,238,219,.76) 100%)}
+      .hero-copy{position:relative;z-index:2;height:100%;min-height:0;padding:clamp(12px,3vh,40px) 27px;justify-content:center;background:none}
+      .hero-copy::before{inset:16px;border-color:rgba(255,255,255,.62)}
+      .hero-copy .floral{display:none}
+      .venue{grid-template-columns:1fr;text-align:center;padding:14px;gap:23px}
+      .look-grid{grid-template-columns:1fr;max-width:390px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+  </style>
+</head>
+<body>
+  <svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.6 5.6 0 0 0-7.9 0l-.9.9-.9-.9a5.6 5.6 0 0 0-7.9 7.9L12 21l8.8-8.5a5.6 5.6 0 0 0 0-7.9Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-church" viewBox="0 0 24 24"><path d="M12 2v5m-3-3h6M4 22V11l8-4 8 4v11M2 22h20M10 22v-7h4v7M7 13h2m6 0h2"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 3h14v18H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h13M3 18a3 3 0 0 1 3-3h13M8 7h7"/></symbol>
+    <symbol id="i-drink" viewBox="0 0 24 24"><path d="M3 4h18l-9 10-9-10Zm9 10v7m-5 0h10M16 6l3-4"/></symbol>
+    <symbol id="i-food" viewBox="0 0 24 24"><path d="M4 2v8m3-8v8M1 2v5a5 5 0 0 0 9 0V2M5.5 11v11M17 22V2c-4 3-5 7-5 13h5"/></symbol>
+    <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 4-7 4-7 0s7-4 7 0Zm12-2c0 4-7 4-7 0s7-4 7 0Z"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="12" rx="1"/><path d="M2 9h20M12 9v12M12 9C2 8 4 1 8 3c2 1 4 6 4 6Zm0 0c10-1 8-8 4-6-2 1-4 6-4 6Z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 12 7-12 7V5Z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke-width="3"/></symbol>
+  </svg>
+
+  <div id="error-screen" class="error-screen" role="alert">
+    <span class="eyebrow">Carla &amp; Oscar</span>
+    <h1 class="script-heading">Invitación especial</h1>
+    <p>Esta invitación es personalizada. Solicita a los novios tu enlace con el ID correcto.</p>
+  </div>
+
+  <header class="navbar" id="navbar">
+    <a href="#inicio" class="brand" aria-label="Carla y Oscar, volver al inicio">Carla <svg class="icon" aria-hidden="true" style="color:var(--coral)"><use href="#i-heart"/></svg> Oscar</a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
+      <svg class="icon" aria-hidden="true"><use id="menuIcon" href="#i-menu"/></svg>
+    </button>
+    <nav class="nav-links" id="navLinks" aria-label="Secciones de la invitación">
+      <a href="#inicio">Portada</a><a href="#nosotros">Nosotros</a><a href="#gran-dia">El gran día</a>
+      <a href="#itinerario">Itinerario</a><a href="#dress-code">Vestimenta</a>
+      <a href="#regalos">Regalos</a><a href="#asistencia">Asistencia</a>
+      <a href="#despedida">Despedida</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section id="inicio" class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <img class="floral tl soft" src="public/images/ramo-tropical-1.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img class="floral br soft" src="public/images/buganvilla-fucsia.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <p class="hero-quote">“Con la bendición de Dios, nuestros padres y la aprobación del mismísimo Sombrero Seleccionador, ¡nos casamos!”</p>
+        <h1 id="hero-title"><span>Oscar</span><span class="amp">&amp;</span><span>Carla</span></h1>
+        <span class="hero-date" aria-hidden="true" style="margin-top: 5%;">23 . 01 . 2027</span>
+      </div>
+      <div class="hero-image">
+        <img src="public/images/novios.jpg" alt="Fotografía de Carla y Oscar" fetchpriority="high" decoding="async" width="1200" height="100%">
+      </div>
+    </section>
+
+    <section id="nosotros" class="section welcome center" aria-labelledby="agradecimiento-title">
+      <img class="floral tl" src="public/images/flor-hibisco-coral.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="floral br" src="public/images/ramo-tropical-2.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <div class="container">
+        <h2 id="agradecimiento-title" class="script-heading">Estimado invitado</h2>
+        <p class="section-copy">Nuestra felicidad no estaría completa sin las personas que han iluminado nuestro camino, y queremos que nos acompañes en este día tan especial para nosotros.</p>
+        <div class="flourish" aria-hidden="true"><svg class="icon"><use href="#i-heart"/></svg></div>
+        <p class="section-copy second-message">Juramos solemnemente que nuestras intenciones no son buenas...<br><strong>¡Son de celebrar a lo grande!</strong></p>
+      </div>
+    </section>
+
+    <section id="gran-dia" class="section day center" aria-labelledby="day-title">
+      <img class="floral tr soft" src="public/images/buganvilla-rosa.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="floral bl faint" src="public/images/flor-hibisco-naranja.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <div class="container">
+        <h2 id="day-title" class="script-heading">El Gran Día</h2>
+        <p class="section-copy">Cada día falta un poquito menos para celebrar juntos.</p>
+        <div class="countdown" id="countdown" role="timer" aria-label="Cuenta regresiva para la boda">
+          <div class="time-box"><span class="time-num" id="days">--</span><span class="time-label">Días</span></div>
+          <div class="time-box"><span class="time-num" id="hours">--</span><span class="time-label">Horas</span></div>
+          <div class="time-box"><span class="time-num" id="minutes">--</span><span class="time-label">Min</span></div>
+          <div class="time-box"><span class="time-num" id="seconds">--</span><span class="time-label">Seg</span></div>
+        </div>
+        <p id="day-status" class="sr-only" aria-live="polite"></p>
+        <div class="venue">
+          <img class="venue-photo" src="public/images/local_villa_victoria.jpg" alt="Jardines de Villa Victoria, lugar de nuestra boda" loading="lazy" decoding="async" width="800" height="700">
+          <div class="venue-details">
+            <h3>Villa Victoria</h3>
+            <p>Pachacámac, Lima, Perú</p>
+            <a class="btn btn-outline" href="https://maps.app.goo.gl/gMvfanpEZq5vjdbR8" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true"><use href="#i-map"/></svg> Cómo llegar
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="itinerario" class="section itinerary" aria-labelledby="itinerary-title">
+      <img class="floral tr faint" src="public/images/ramo-tropical-1.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="floral bl soft" src="public/images/buganvilla-fucsia.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <div class="container">
+        <div class="center"><h2 id="itinerary-title" class="script-heading">Itinerario</h2></div>
+        <ol class="timeline">
+          <li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-church"/></svg></span><div><h3>Ceremonia</h3><time datetime="2027-01-23T15:00:00-05:00">15:00 hrs</time></div></li>
+          <!--li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-church"/></svg></span><div><h3>Ceremonia Religiosa</h3><time datetime="2027-01-23T15:00:00-05:00">15:00 hrs</time></div></li-->
+          <!--li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span><div><h3>Ceremonia Civil</h3><time datetime="2027-01-23T16:00:00-05:00">16:00 hrs</time></div></li-->
+          <li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-drink"/></svg></span><div><h3>Cóctel de Bienvenida</h3><time datetime="2027-01-23T16:30:00-05:00">16:00 hrs</time></div></li>
+          <li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><div><h3>Recepción y Cena</h3><time datetime="2027-01-23T17:00:00-05:00">17:00 hrs</time></div></li>
+          <li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-music"/></svg></span><div><h3>¡Show Time!</h3><time datetime="2027-01-23T20:00:00-05:00">21:00 hrs</time></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="dress-code" class="section dress center" aria-labelledby="dress-title">
+      <img class="floral tl faint" src="public/images/ramo-tropical-2.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="floral br faint" src="public/images/buganvilla-rosa.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <div class="container">
+        <h2 id="dress-title" class="script-heading">Vestimenta</h2>
+        <div class="look-grid">
+          <figure class="look-card"><img src="public/images/vestidos.png" alt="Referencias de vestidos largos y midi de colores vivos" loading="lazy" decoding="async" width="600" height="900"><figcaption><strong>Inspiración para ellas</strong><span>Vestido midi o largo en colores vivos, con tacos cómodos para jardín. Evitar blanco, marfil o tonos similares.</span></figcaption></figure>
+          <figure class="look-card"><img src="public/images/trajes.png" alt="Referencias de trajes elegantes para hombres" loading="lazy" decoding="async" width="600" height="900"><figcaption><strong>Inspiración para ellos</strong><span>Traje elegante; corbata opcional.</span></figcaption></figure>
+        </div>
+        <p class="dress-note">Gracias por ayudarnos a crear la atmósfera con tu estilo y elegancia.<br>¡Nos vemos en la pista de baile!</p>
+      </div>
+    </section>
+
+    <section id="regalos" class="section gifts center" aria-labelledby="gifts-title">
+      <img class="floral tr soft" src="public/images/flor-hibisco-coral.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="floral bl faint" src="public/images/flor-hibisco-naranja.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <div class="container">
+        <h2 id="gifts-title" class="script-heading">Contribuciones</h2>
+        <div class="gifts-card">
+          <svg class="icon" aria-hidden="true"><use href="#i-gift"/></svg>
+          <p>Tu presencia es nuestro mejor regalo. Si además puedes tener un detalle con nosotros, cualquier aporte para nuestra luna de miel será recibido con muchísimo cariño.</p>
+          <div class="account"><div><strong>CUENTA BBVA</strong><span>0011 ABC</span></div><button class="copy-btn" type="button" data-copy="0011 ABC" aria-label="Copiar cuenta BBVA"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+          <div class="account"><div><strong>CCI BBVA</strong><span>0023 DEF</span></div><button class="copy-btn" type="button" data-copy="0023 DEF" aria-label="Copiar CCI BBVA"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+          <p class="copy-hint" id="copy-status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="asistencia" class="section rsvp center" aria-labelledby="rsvp-title">
+      <img class="floral tl soft" src="public/images/buganvilla-fucsia.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <img class="floral br soft" src="public/images/ramo-tropical-2.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <div class="container">
+        <h2 id="rsvp-title" class="script-heading">Nos encantará verte</h2>
+        <p class="section-copy">¡Gracias por ser parte de nuestra aventura!<br> Confirma tu asistencia <strong>hasta el 30 de noviembre de 2026.</strong></p>
+        <p class="section-copy" id="guest-summary" style="margin-top:15px;font-size:1.28rem"></p>
+        
+        <div id="rsvp-actions">
+          <button class="btn btn-outline" type="button" id="rsvp-button">Confirmar asistencia <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></button>
+          <p class="rsvp-message" id="rsvp-message" role="status" aria-live="polite" hidden></p>
+        </div>
+
+        <div id="calendar-actions" hidden>
+          <p class="rsvp-message" style="display:block; margin-bottom:15px;">¡Gracias por confirmar! Te esperamos con mucha emoción.</p>
+          <button class="btn btn-outline" type="button" id="calendar-btn">Guardar en el calendario <svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="despedida" class="section farewell center" aria-labelledby="farewell-title">
+      <div class="farewell-content container">
+        <span class="farewell-eyebrow">Carla &amp; Oscar · 23.01.2027</span>
+        <h2 class="cursive" id="farewell-title">¡Te esperamos!</h2>
+        <div class="farewell-rule" aria-hidden="true">♡</div>
+        <p class="farewell-kids">Celebración solo para adultos</p>
+        <h3>¡Toque de queda infantil!</h3>
+        <p class="farewell-message">Queremos que te diviertas y disfrutes al máximo.</p>
+        <p class="farewell-last">Con mucho cariño, gracias por acompañarnos en nuestro gran día.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><a href="#inicio" class="brand">Carla <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg> Oscar</a><small>23 · 01 · 2027 · PACHACÁMAC</small></footer>
+
+  <audio id="bgMusic" preload="none" loop><source src="public/music/todalavida.mp3" type="audio/mpeg"></audio>
+  <button id="musicToggle" class="music-toggle" type="button" aria-label="Reproducir música" aria-pressed="false" title="Reproducir música">
+    <svg class="icon" aria-hidden="true" id="musicIcon"><use href="#i-play"/></svg>
+    <div id="musicTooltip" class="music-tooltip">Dale play a nuestra canción</div>
+  </button>
+
+  <script>
+  (() => {
+    'use strict';
+    
+    // ======== SHEETSON CONFIGURATION ========
+    const API_KEY = 'rLxwCBqrritx4bp-tnHlaFsEbsaZJAbpNoTyU-kifyE5W8RL_9VJjiWOfbc';
+    const SPREADSHEET_ID = '1i-_V-kOf7qj3tO1pZQyj43YSV9h4gVGC5zGXngybhXA';
+    const SHEET_NAME = 'confirmaciones';
+    const BASE_URL = 'https://api.sheetson.com/v2/sheets';
+
+    function buildApiUrl(endpoint, params = {}) {
+      const url = new URL(`${BASE_URL}/${endpoint}`);
+      url.searchParams.append('apiKey', API_KEY);
+      url.searchParams.append('spreadsheetId', SPREADSHEET_ID);
+      Object.entries(params).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          url.searchParams.append(key, String(value));
+        }
+      });
+      return url.toString();
+    }
+
+    async function getRow(rowIndex) {
+      const response = await fetch(buildApiUrl(`${SHEET_NAME}/${rowIndex}`));
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      return await response.json();
+    }
+
+    async function updateRow(rowIndex, updates) {
+      const response = await fetch(buildApiUrl(`${SHEET_NAME}/${rowIndex}`), {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updates)
+      });
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      return await response.json();
+    }
+    // ========================================
+
+    const $ = (selector) => document.querySelector(selector);
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id');
+
+    // Tooltip de Música
+    setTimeout(() => {
+      const tooltip = $('#musicTooltip');
+      if(tooltip) {
+        tooltip.classList.add('show');
+        setTimeout(() => tooltip.classList.remove('show'), 6000);
+      }
+    }, 2000);
+    // Si hay un ID en la URL, intentamos obtener los datos de Sheetson
+    if (id) {
+      getRow(id).then(data => {
+        console.log(data);
+        const invitado = data.name || '';
+        const acompanante = data.companion && data.companion !== '-' ? data.companion : '';
+        const nbr = data.nbr || 1;
+        const isConfirmed = data.confirmed === true || data.confirmed === 'True' || data.confirmed === 'true';
+        console.log(invitado, acompanante, nbr, isConfirmed);
+        if (invitado) {
+          $('#agradecimiento-title').textContent = acompanante ? `Hola ${invitado} y ${acompanante}` : `Hola ${invitado}`;
+        }
+        $('#guest-summary').textContent = `Confirmación para ${nbr} invitado${nbr > 1 ? 's' : ''}`;
+
+        if (isConfirmed) {
+          $('#rsvp-actions').hidden = true;
+          $('#calendar-actions').hidden = false;
+        } else {
+          $('#rsvp-actions').hidden = false;
+          $('#calendar-actions').hidden = true;
+        }
+
+        // Evento de confirmación
+        const btnConfirmar = $('#rsvp-button');
+        btnConfirmar.addEventListener('click', async () => {
+          btnConfirmar.disabled = true;
+          btnConfirmar.textContent = 'Enviando...';
+          try {
+            await updateRow(id, { confirmed: "True" });
+            $('#rsvp-actions').hidden = true;
+            $('#calendar-actions').hidden = false;
+          } catch (error) {
+            btnConfirmar.disabled = false;
+            btnConfirmar.textContent = 'Error. Intentar de nuevo';
+            const msg = $('#rsvp-message');
+            msg.textContent = 'Ocurrió un problema al guardar tu confirmación. Intenta otra vez.';
+            msg.hidden = false;
+            msg.classList.add('warning');
+          }
+        });
+      }).catch(e => {
+        console.warn('No se pudo cargar la información personalizada desde Sheetson:', e);
+      });
+    }
+
+    // Lógica para abrir el calendario directamente en móviles/escritorio
+    const calendarBtn = $('#calendar-btn');
+    if (calendarBtn) {
+      calendarBtn.addEventListener('click', () => {
+        const icsContent = 
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Boda Carla y Oscar//ES
+BEGIN:VEVENT
+SUMMARY:Boda Carla y Oscar
+DESCRIPTION:¡Acompáñanos a celebrar nuestra boda en Villa Victoria, Pachacámac!
+LOCATION:Villa Victoria, Pachacámac, Lima, Perú
+DTSTART:20270123T200000Z
+DTEND:20270124T060000Z
+END:VEVENT
+END:VCALENDAR`;
+
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        
+        // Abrir protocolo data/blob para forzar la apertura del gestor de calendario nativo
+        window.location.href = url;
+      });
+    }
+
+    // Navegación fluida y solución al scroll
+    const menuBtn = $('#menuToggle');
+    const nav = $('#navLinks');
+    const menuIcon = $('#menuIcon');
+    const setMenu = (open) => {
+      nav.classList.toggle('open', open);
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      menuIcon.setAttribute('href', open ? '#i-close' : '#i-menu');
+    };
+    
+    const sectionLinks = [...nav.querySelectorAll('a[href^="#"]')];
+    const trackedSections = sectionLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    let scrollFrame = 0;
+    const syncActiveSection = () => {
+      scrollFrame = 0;
+      const midpoint = window.innerHeight * 0.48 + $('#navbar').getBoundingClientRect().height * 0.52;
+      let active = trackedSections[0];
+      for (const section of trackedSections) {
+        if (section.getBoundingClientRect().top <= midpoint) active = section;
+      }
+      sectionLinks.forEach(a => {
+        const isActive = a.getAttribute('href') === '#' + active.id;
+        a.classList.toggle('active', isActive);
+        if (isActive) a.setAttribute('aria-current', 'location');
+        else a.removeAttribute('aria-current');
+      });
+    };
+    window.addEventListener('scroll', () => { if (!scrollFrame) scrollFrame = requestAnimationFrame(syncActiveSection); }, {passive:true});
+    window.addEventListener('resize', syncActiveSection, {passive:true});
+    syncActiveSection();
+
+    menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+    
+    sectionLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        setMenu(false);
+        const targetId = link.getAttribute('href');
+        const targetEl = document.querySelector(targetId);
+        if(targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') setMenu(false); });
+    document.addEventListener('click', event => { if (!event.target.closest('.navbar')) setMenu(false); });
+
+    // Cuenta regresiva
+    const weddingTime = Date.parse('2027-01-23T15:00:00-05:00');
+    let clockTimer;
+    const pad = n => String(n).padStart(2, '0');
+    const updateCountdown = () => {
+      const diff = Math.max(0, weddingTime - Date.now());
+      const secs = Math.floor(diff / 1000);
+      $('#days').textContent = String(Math.floor(secs / 86400));
+      $('#hours').textContent = pad(Math.floor((secs % 86400) / 3600));
+      $('#minutes').textContent = pad(Math.floor((secs % 3600) / 60));
+      $('#seconds').textContent = pad(secs % 60);
+      if (diff <= 0) {
+        clearInterval(clockTimer);
+        $('#day-status').textContent = '¡Llegó el gran día!';
+        $('#countdown').setAttribute('aria-label', '¡Llegó el gran día!');
+      }
+    };
+    updateCountdown();
+    if (weddingTime > Date.now()) clockTimer = window.setInterval(updateCountdown, 1000);
+
+    // Música
+    const audio = $('#bgMusic');
+    const musicBtn = $('#musicToggle');
+    const syncAudio = () => {
+      const playing = !audio.paused && !audio.ended;
+      musicBtn.setAttribute('aria-pressed', String(playing));
+      musicBtn.setAttribute('aria-label', playing ? 'Pausar música' : 'Reproducir música');
+      musicBtn.title = playing ? 'Pausar música' : 'Reproducir música';
+      $('#musicIcon use').setAttribute('href', playing ? '#i-pause' : '#i-play');
+    };
+    musicBtn.addEventListener('click', async () => {
+      $('#musicTooltip').classList.remove('show');
+      if (!audio.paused) { audio.pause(); return; }
+      try { await audio.play(); }
+      catch { musicBtn.title = 'No se pudo reproducir la música'; }
+      syncAudio();
+    });
+    ['play','pause','ended','error'].forEach(event => audio.addEventListener(event, syncAudio));
+
+    // Copiar cuentas bancarias
+    function $$(selector) { return document.querySelectorAll(selector); }
+    $$('.copy-btn').forEach(btn => btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy);
+        $('#copy-status').textContent = 'Número copiado al portapapeles.';
+      } catch {
+        $('#copy-status').textContent = 'Mantén presionado el número para seleccionarlo manualmente.';
+      }
+    }));
+  })();
+  </script>
+</body>
+</html>
