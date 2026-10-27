@@ -10,15 +10,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Foto protagonista: la prioridad de carga más alta del sitio. -->
+  
+  <!-- Foto protagonista: máxima prioridad de carga -->
   <link rel="preload" href="public/images/novios.jpg" as="image" fetchpriority="high">
+  
   <script>document.documentElement.classList.replace('no-js','js');</script>
   <style>
     /* ==========================================================
-       CARLA & OSCAR · ATARDECER TROPICAL
-       Paleta oficial: fucsia #D81B60, naranja #F47A20,
-       mango #F7B733, coral #F26A5E, durazno #F8C3A5,
-       orquídea #E96BA8, hoja #5C8A45, oliva #A9B66A.
+       CARLA & OSCAR · PALETA ATARDECER TROPICAL
        ========================================================== */
     :root {
       --marfil:#fff8ee; --papel:#fffcf6; --tinta:#342722; --muted:#715b51;
@@ -33,7 +32,7 @@
       --sans:'Montserrat',Arial,sans-serif;
     }
     *,*::before,*::after{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 14px)}
+    html{scroll-padding-top:calc(var(--nav-h) + 10px)}
     body{margin:0;overflow-x:hidden;background:var(--marfil);color:var(--tinta);font-family:var(--serif);font-size:clamp(1.15rem,1.2vw + .9rem,1.45rem);line-height:1.5}
     button,a{touch-action:manipulation}
     button{font:inherit}
@@ -48,8 +47,7 @@
     .container{width:min(100% - 40px,1050px);margin-inline:auto}
     .center{text-align:center}
     .script-heading{font-family:var(--script);font-size:clamp(3.65rem,7.4vw,6.7rem);font-weight:400;line-height:1.17;color:var(--vino);margin:10px 0 16px;overflow-wrap:anywhere}
-    .section{position:relative;isolation:isolate;padding:clamp(70px,9vw,114px) 0;overflow:hidden}
-    .section + .section{border-top:0}
+    .section{position:relative;isolation:isolate;padding:clamp(70px,9vw,114px) 0;overflow:hidden;min-height:calc(100svh - var(--nav-h));display:flex;align-items:center;justify-content:center}
     .section-copy{max-width:680px;margin:0 auto;font-size:clamp(1.32rem,2vw,1.72rem);line-height:1.55}
     .section-copy + .section-copy{margin-top:25px}
     .floral{position:absolute;z-index:-1;pointer-events:none;user-select:none;max-width:none;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(79,53,31,.08))}
@@ -59,6 +57,7 @@
     .floral.br{bottom:-85px;right:-65px;width:clamp(200px,30vw,385px)}
     .floral.soft{opacity:.72}
     .floral.faint{opacity:.43}
+    
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;min-height:52px;padding:14px 27px;border:1.5px solid var(--vino);border-radius:999px;font:600 .86rem/1.3 var(--sans);text-decoration:none;cursor:pointer;transition:background .18s,color .18s,transform .18s,box-shadow .18s}
     .btn:hover{transform:translateY(-2px)}
     .btn-outline{color:var(--vino);background:rgba(255,252,246,.75);box-shadow:0 8px 20px rgba(145,61,56,.1)}
@@ -68,30 +67,29 @@
     .btn:disabled{opacity:.65;cursor:wait;transform:none}
 
     /* Barra principal */
-    .navbar{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:var(--nav-h);padding:9px max(20px,calc((100vw - 1200px)/2));background:rgba(255,248,238,.95);border-bottom:1px solid rgba(145,61,56,.11);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+    .navbar{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,2vw,30px);min-height:var(--nav-h);padding:9px max(18px,calc((100vw - 1080px)/2));background:rgba(255,248,238,.95);border-bottom:1px solid rgba(145,61,56,.11);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
     .brand{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-family:var(--script);font-size:clamp(1.8rem,2.6vw,2.45rem);line-height:1;color:var(--vino);white-space:nowrap}
     .brand .icon{width:27px;height:27px;stroke-width:2.3}
-    .nav-links{display:flex;align-items:center;gap:clamp(11px,1.7vw,23px)}
-    .nav-links a{font:600 .69rem/1.4 var(--sans);letter-spacing:.055em;text-transform:uppercase;text-decoration:none;color:#68463d;white-space:nowrap;padding:11px 0}
-    .nav-links a:hover{color:var(--fucsia)}
+    .nav-links{display:flex;align-items:center;gap:3px;flex-wrap:nowrap}
+    .nav-links a{font:600 .69rem/1.4 var(--sans);letter-spacing:.055em;text-transform:uppercase;text-decoration:none;color:#68463d;white-space:nowrap;padding:11px 10px;border-radius:999px;transition:background-color .2s,color .2s,box-shadow .2s}
+    .nav-links a.active,.nav-links a[aria-current="location"]{background:#fce3d9;color:var(--vino);box-shadow:inset 0 0 0 1px rgba(145,61,56,.13)}
+    .nav-links a:hover{background:#fff0e8;color:var(--fucsia)}
     .menu-toggle{display:none;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid var(--linea);border-radius:12px;background:var(--papel);color:var(--vino);cursor:pointer}
 
-    /* Portada: composición editorial en escritorio y foto a pantalla completa en móvil */
-    .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:min(810px,calc(100svh - var(--nav-h)));background:var(--marfil);overflow:hidden}
-    .hero-copy{position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:95px clamp(24px,5vw,82px);text-align:center;isolation:isolate;background:radial-gradient(ellipse at 10% 5%,rgba(248,195,165,.52),transparent 43%),radial-gradient(ellipse at 100% 100%,rgba(247,183,51,.13),transparent 50%),var(--marfil)}
-    .hero-copy::before{content:"";position:absolute;inset:24px;border:1px solid rgba(145,61,56,.23);border-radius:180px 180px 14px 14px;z-index:-1}
+    /* Portada */
+    .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);height:calc(100svh - var(--nav-h));background:var(--marfil);overflow:hidden}
+    .hero-copy{position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:clamp(20px,4vh,45px) clamp(20px,3vw,50px);text-align:center;isolation:isolate;background:radial-gradient(ellipse at 10% 5%,rgba(248,195,165,.52),transparent 43%),radial-gradient(ellipse at 100% 100%,rgba(247,183,51,.13),transparent 50%),var(--marfil)}
+    .hero-copy::before{content:"";position:absolute;inset:clamp(10px,2vh,22px);border:1px solid rgba(145,61,56,.23);border-radius:180px 180px 14px 14px;z-index:-1}
     .hero-copy .floral{z-index:-1}
-    .hero-pretitle{font-family:var(--sans);font-size:clamp(.76rem,1vw,.92rem);font-weight:600;text-transform:uppercase;letter-spacing:.27em;color:var(--vino);margin:0 0 22px}
-    .hero h1{margin:0;font-family:var(--script);font-weight:400;font-size:clamp(5rem,8vw,9rem);line-height:.89;color:var(--vino);text-shadow:0 3px 9px rgba(255,248,238,.4)}
+    .hero-pretitle{font-family:var(--sans);font-size:clamp(.76rem,1vw,.92rem);font-weight:600;text-transform:uppercase;letter-spacing:.27em;color:var(--vino);margin:0 0 clamp(8px,1.5vh,18px)}
+    .hero h1{margin:0;font-family:var(--script);font-weight:400;font-size:clamp(3.5rem,min(7vw,13vh),8rem);line-height:.89;color:var(--vino);text-shadow:0 3px 9px rgba(255,248,238,.4)}
     .hero h1 span{display:block}
-    .hero h1 .amp{font-size:.67em;line-height:.9;margin:12px 0}
-    .hero-quote{max-width:440px;font-size:clamp(1.17rem,1.9vw,1.55rem);line-height:1.42;font-style:italic;margin:30px 0 20px}
-    .hero-date{font-weight:600;letter-spacing:.22em;font-size:clamp(1.55rem,2.9vw,2.2rem);margin:7px 0 22px;white-space:nowrap}
-    .hero-scroll{display:inline-flex;align-items:center;gap:7px;font:600 .68rem var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--vino);text-decoration:none}
-    .hero-image{position:relative;min-height:620px;background:#e9b79d}
-    .hero-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+    .hero h1 .amp{font-size:.67em;line-height:.9;margin:clamp(2px,.6vh,9px) 0}
+    .hero-quote{max-width:440px;font-size:clamp(1rem,1.6vw,1.35rem);line-height:1.42;font-style:italic;margin:clamp(10px,2vh,24px) 0 10px}
+    .hero-date{font-weight:600;letter-spacing:.22em;font-size:clamp(1.25rem,2.2vw,2rem);margin:4px 0 12px;white-space:nowrap}
+    .hero-image{position:relative;height:100%;background:#e9b79d}
+    .hero-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%}
     .hero-image::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(90,41,20,.07),transparent 20%),linear-gradient(0deg,rgba(53,29,26,.22),transparent 32%);pointer-events:none}
-    .hero-photo-caption{position:absolute;bottom:32px;right:30px;z-index:1;color:white;text-shadow:0 2px 14px rgba(0,0,0,.55);font:400 2rem var(--script)}
 
     /* Saludo */
     .welcome{background:linear-gradient(180deg,#fffcf5,#fff4e8)}
@@ -126,13 +124,14 @@
     .event h3{margin:0;color:var(--vino);font-size:clamp(1.55rem,2.8vw,2rem);font-weight:600;line-height:1.2}
     .event time{display:block;font:600 .9rem var(--sans);margin-top:5px}
 
-    /* Vestimenta: dos imágenes sin animación infinita */
+    /* Vestimenta */
     .dress{background:radial-gradient(circle at 100% 0%,rgba(233,107,168,.13),transparent 40%),#fff7ec}
-    .dress-intro{max-width:750px;margin:0 auto 35px;font-style:italic}
     .look-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;width:min(100%,840px);margin:0 auto}
     .look-card{margin:0;background:var(--papel);padding:12px;border:1px solid var(--linea);border-radius:20px;box-shadow:0 10px 25px rgba(102,58,39,.065)}
     .look-card img{width:100%;height:clamp(220px,34vw,410px);object-fit:cover;object-position:center top;border-radius:12px;background:#f6e6d8}
-    .look-card figcaption{font:600 .82rem var(--sans);color:var(--vino);padding:12px 5px 4px}
+    .look-card figcaption{display:grid;gap:9px;font-family:var(--serif);font-size:1.15rem;font-weight:400;text-align:center;padding:15px 11px 13px;line-height:1.28}
+    .look-card figcaption strong{font-family:var(--sans);color:var(--vino);font-size:.84rem}
+    .look-card figcaption span{color:var(--tinta)}
     .dress-note{max-width:690px;margin:20px auto 0;font-style:italic}
 
     /* Regalos */
@@ -146,56 +145,30 @@
     .copy-btn:hover{background:#ffe5d9}
     .copy-hint{font:500 .7rem var(--sans);color:var(--muted);margin:13px 0 0!important;min-height:1.4em}
 
-    /* Confirmación */
+    /* Confirmación y Calendario */
     .rsvp{background:radial-gradient(ellipse at 50% 100%,rgba(247,183,51,.28),transparent 60%),linear-gradient(180deg,#fff9ed,#ffe9db);padding-bottom:clamp(95px,12vw,150px)}
     .rsvp .section-copy{max-width:600px}
-    .rsvp form{margin-top:26px}
-    .rsvp .btn{min-width:min(100%,300px)}
+    .rsvp .btn{min-width:min(100%,320px)}
+    
+    .rsvp-box{width:min(100%,520px);margin:24px auto 0;padding:26px 20px;background:rgba(255,252,247,.9);border:1px solid var(--linea);border-radius:22px;box-shadow:0 10px 30px rgba(102,58,39,.06)}
+    .rsvp-options{margin-bottom:22px;text-align:center}
+    .rsvp-options-title{font-family:var(--sans);font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--vino);margin-bottom:14px}
+    .rsvp-selector{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .rsvp-option{position:relative;cursor:pointer}
+    .rsvp-option input[type="radio"]{position:absolute;opacity:0;pointer-events:none}
+    .rsvp-card{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 10px;border:1.5px solid #dcc2b3;border-radius:14px;background:#fff;transition:border-color .2s,background .2s,box-shadow .2s}
+    .rsvp-option input[type="radio"]:checked + .rsvp-card{border-color:var(--vino);background:#fff1e8;box-shadow:0 4px 12px rgba(179,57,18,.15)}
+    .rsvp-num{font-family:var(--script);font-size:2.2rem;line-height:1;color:var(--vino)}
+    .rsvp-label{font-family:var(--sans);font-size:.7rem;font-weight:600;text-transform:uppercase;color:#5a3f36;margin-top:2px}
+
+    .rsvp-confirmed-view{display:flex;flex-direction:column;align-items:center;gap:15px;margin-top:10px}
+    .rsvp-badge{display:inline-flex;align-items:center;gap:8px;padding:9px 20px;border-radius:999px;background:#eef6e8;border:1px solid #a3c48f;color:#355c27;font-family:var(--sans);font-weight:600;font-size:.82rem}
     .rsvp-message{max-width:550px;margin:20px auto 0;padding:12px 16px;border:1px solid #acc29a;border-radius:12px;color:#375a2d;background:#f2f8ed;font-size:1.09rem}
     .rsvp-message.warning{background:#fff6e1;border-color:#e6bb73;color:#6e4c25}
-    .footer{background:#fff4e6;color:var(--vino);text-align:center;padding:35px 20px 45px;border-top:1px solid #ead5c5}
-    .footer .brand{justify-content:center;font-size:2.5rem}
-    .footer small{display:block;margin-top:9px;font:500 .69rem var(--sans);letter-spacing:.19em}
-    .footer .icon{color:var(--coral)}
 
-    /* Música: control explícito; los navegadores bloquean autoplay con sonido */
-    .music-toggle{position:fixed;z-index:1010;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:center;width:56px;height:56px;border:1px solid rgba(145,61,56,.19);border-radius:50%;background:rgba(255,250,240,.95);color:var(--vino);box-shadow:0 9px 30px rgba(70,37,23,.16);backdrop-filter:blur(8px);cursor:pointer}
-    .music-toggle .icon{width:23px;height:23px}
-    .music-toggle[aria-pressed="true"]{background:var(--vino);color:#fff}
-    .error-screen{display:none;min-height:100svh;align-items:center;justify-content:center;flex-direction:column;gap:18px;padding:30px;text-align:center;background:radial-gradient(circle at top,#ffe0cc,var(--marfil) 65%)}
-    .error-screen .script-heading{margin:0}
-    .error-screen p{max-width:510px;margin:0}
-    .js:not(.ready) #main-content,.js:not(.ready) .navbar,.js:not(.ready) .music-toggle{visibility:hidden}
-    .js.invalid #main-content,.js.invalid .navbar,.js.invalid .music-toggle,.js.invalid .footer{display:none!important}
-    .js.invalid .error-screen{display:flex}
-    .js.ready #main-content,.js.ready .navbar,.js.ready .music-toggle{visibility:visible}
-
-    /* Navegación compacta y señalización de la sección visible */
-    .navbar{padding-inline:max(18px,calc((100vw - 1080px)/2));gap:clamp(16px,2vw,30px)}
-    .nav-links{gap:3px;flex-wrap:nowrap}
-    .nav-links a{padding:11px 10px;border-radius:999px;transition:background-color .2s,color .2s,box-shadow .2s}
-    .nav-links a.active,.nav-links a[aria-current="location"]{background:#fce3d9;color:var(--vino);box-shadow:inset 0 0 0 1px rgba(145,61,56,.13)}
-    .nav-links a:hover{background:#fff0e8}
-
-    /* Un desplazamiento suave de página a página, sin separadores duros. */
-    html{scroll-padding-top:var(--nav-h);scroll-snap-type:y proximity}
-    main > section{scroll-snap-align:start;scroll-margin-top:var(--nav-h)}
-    .section{min-height:calc(100svh - var(--nav-h));display:flex;align-items:center;justify-content:center;padding-block:clamp(45px,6vh,88px)}
-    .hero{height:calc(100svh - var(--nav-h));min-height:0;max-height:none}
-    .hero-copy{min-height:0;padding:clamp(18px,3vh,40px) clamp(20px,3vw,50px)}
-    .hero-copy::before{inset:clamp(10px,2vh,22px)}
-    .hero-pretitle{margin-bottom:clamp(5px,1.3vh,18px)}
-    .hero h1{font-size:clamp(3.5rem, min(7vw, 13vh), 8rem)}
-    .hero h1 .amp{margin:clamp(2px,.6vh,9px) 0}
-    .hero-quote{margin:clamp(10px,2vh,24px) 0 10px;font-size:clamp(1rem,1.6vw,1.35rem)}
-    .hero-date{margin:4px 0 12px;font-size:clamp(1.25rem,2.2vw,2rem)}
-    .hero-image{min-height:0;height:100%}
-    .look-card figcaption{display:grid;gap:9px;font-family:var(--serif);font-size:1.15rem;font-weight:400;text-align:center;padding:15px 11px 13px;line-height:1.28}
-    .look-card figcaption strong{font-family:var(--sans);color:var(--vino);font-size:.84rem}
-    .look-card figcaption span{color:var(--tinta)}
-
-    /* Última pantalla fotográfica */
-    .farewell{min-height:calc(100svh - var(--nav-h));background:#52392e url('public/images/local_villa_victoria.jpg') center / cover no-repeat;color:#fff;isolation:isolate;text-shadow:0 2px 15px rgba(22,15,12,.3)}
+    /* Despedida */
+    .farewell{min-height:calc(100svh - var(--nav-h));position:relative;color:#fff;isolation:isolate;text-shadow:0 2px 15px rgba(22,15,12,.3)}
+    .farewell-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
     .farewell::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(155deg,rgba(32,30,23,.57),rgba(47,30,29,.67) 58%,rgba(58,27,37,.75))}
     .farewell-content{max-width:800px}
     .farewell-eyebrow{font:600 .7rem var(--sans);letter-spacing:.2em;text-transform:uppercase}
@@ -206,54 +179,58 @@
     .farewell-message{font-size:clamp(1.5rem,3vw,2.2rem);font-style:italic;line-height:1.3;margin:0 auto 28px;max-width:620px}
     .farewell-last{font-size:1.18rem;margin:0 auto;max-width:580px}
 
-    /* Bienvenida musical: no intenta reproducir sonido automáticamente */
-    .music-welcome[hidden]{display:none!important}
-    .music-welcome{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;padding:20px;background:rgba(38,25,23,.57);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
-    .music-welcome-card{width:min(100%,465px);max-height:calc(100svh - 36px);overflow-y:auto;text-align:center;padding:clamp(26px,5vw,46px);background:linear-gradient(155deg,#fffdfa,#fff0e4);border:1px solid #f7d9c8;border-radius:27px;box-shadow:0 24px 80px rgba(38,25,23,.22)}
-    .music-welcome-icon{display:grid;place-items:center;width:60px;height:60px;margin:0 auto 14px;border-radius:50%;background:#f8d9cb;color:var(--vino);font-size:2rem}
-    .music-welcome-card h2{font-size:clamp(3.5rem,9vw,5rem);color:var(--vino);margin:10px 0 5px}
-    .music-welcome-card p:not(.eyebrow){font-size:1.25rem;margin:0 auto 25px;line-height:1.4}
-    .music-welcome-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
-    .music-welcome-actions .btn{min-height:46px;padding:11px 17px;font-size:.76rem}
-    body.modal-open{overflow:hidden}
+    .footer{background:#fff4e6;color:var(--vino);text-align:center;padding:35px 20px 45px;border-top:1px solid #ead5c5}
+    .footer .brand{justify-content:center;font-size:2.5rem}
+    .footer small{display:block;margin-top:9px;font:500 .69rem var(--sans);letter-spacing:.19em}
+    .footer .icon{color:var(--coral)}
 
-    @media (max-height:720px) and (min-width:681px){
-      .hero h1{font-size:clamp(3.5rem,10vh,6rem)}
-      .hero-quote{font-size:1.05rem;margin:8px 0}
-      .hero-date{font-size:1.25rem}
-      .hero-copy{padding-block:12px}
-    }
-    @media(max-width:1050px){
-      .navbar{padding-inline:20px}
-      .nav-links{gap:11px}
-      .nav-links a{font-size:.62rem}
-    }
+    /* ==========================================================
+       MEJORA 5: TOOLTIP AL COSTADO (IZQUIERDA) DEL BOTÓN
+       ========================================================== */
+    .music-container{position:fixed;z-index:1010;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));display:flex;align-items:center}
+    .music-toggle{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border:1.5px solid rgba(145,61,56,.25);border-radius:50%;background:rgba(255,250,240,.96);color:var(--vino);box-shadow:0 9px 30px rgba(70,37,23,.18);backdrop-filter:blur(8px);cursor:pointer;transition:transform .2s,background .2s}
+    .music-toggle:hover{transform:scale(1.06)}
+    .music-toggle .icon{width:23px;height:23px}
+    .music-toggle[aria-pressed="true"]{background:var(--vino);color:#fff}
+    
+    .music-tooltip{position:absolute;right:calc(100% + 14px);top:50%;display:flex;align-items:center;gap:10px;padding:9px 14px;background:var(--papel);border:1.5px solid var(--coral);border-radius:12px;box-shadow:0 8px 24px rgba(102,58,39,.18);font-family:var(--sans);font-size:.75rem;font-weight:600;color:var(--vino);white-space:nowrap;max-width:calc(100vw - 90px);opacity:0;visibility:hidden;transform:translateY(-50%) translateX(10px);transition:opacity .35s ease,transform .35s ease,visibility .35s;pointer-events:none}
+    .music-tooltip::after{content:"";position:absolute;top:50%;right:-6px;width:10px;height:10px;background:var(--papel);border-right:1.5px solid var(--coral);border-top:1.5px solid var(--coral);transform:translateY(-50%) rotate(45deg)}
+    .music-tooltip.visible{opacity:1;visibility:visible;transform:translateY(-50%) translateX(0);pointer-events:auto}
+    .music-tooltip-close{background:none;border:none;color:var(--muted);font-size:1.1rem;cursor:pointer;padding:0;line-height:1}
+
+    .error-screen{display:none;min-height:100svh;align-items:center;justify-content:center;flex-direction:column;gap:18px;padding:30px;text-align:center;background:radial-gradient(circle at top,#ffe0cc,var(--marfil) 65%)}
+    .error-screen .script-heading{margin:0}
+    .error-screen p{max-width:510px;margin:0}
+    
+    .js:not(.ready) #main-content,.js:not(.ready) .navbar,.js:not(.ready) .music-container{visibility:hidden}
+    .js.invalid #main-content,.js.invalid .navbar,.js.invalid .music-container,.js.invalid .footer{display:none!important}
+    .js.invalid .error-screen{display:flex}
+    .js.ready #main-content,.js.ready .navbar,.js.ready .music-container{visibility:visible}
+
+    /* Adaptabilidad Móvil */
     @media(max-width:850px){
       :root{--nav-h:68px}
       .menu-toggle{display:flex}
       .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(255,248,238,.98);border-bottom:1px solid #ead2c1;box-shadow:0 15px 20px rgba(52,39,34,.12);padding:8px 20px 18px;max-height:calc(100svh - var(--nav-h));overflow-y:auto}
       .nav-links.open{display:flex}
       .nav-links a{font-size:.76rem;padding:13px 15px;border-bottom:0;border-radius:12px}
-      .hero{min-height:0}
     }
     @media(max-width:680px){
       .container{width:min(100% - 34px,620px)}
       .section{padding:68px 0}
       .script-heading{font-size:clamp(3.6rem,12vw,5.2rem)}
       .hero{display:block;position:relative;height:calc(100svh - var(--nav-h));min-height:0;background:#bc7d5e}
-      .hero-image{position:absolute;inset:0;min-height:0}
-      .hero-image img{object-position:center 43%}
-      .hero-image::after{background:linear-gradient(180deg,rgba(255,239,218,.23) 0%,rgba(255,246,232,.42) 34%,rgba(255,238,219,.76) 100%)}
-      .hero-copy{position:relative;z-index:2;height:100%;min-height:0;padding:clamp(12px,3vh,40px) 27px;justify-content:center;background:none}
-      .hero-copy::before{inset:16px;border-color:rgba(255,255,255,.62)}
+      .hero-image{position:absolute;inset:0}
+      .hero-image img{object-position:center 30%}
+      .hero-image::after{background:linear-gradient(180deg,rgba(255,248,238,.08) 0%,rgba(255,248,238,.28) 42%,rgba(255,246,232,.78) 72%,rgba(255,248,238,.95) 100%)}
+      .hero-copy{position:relative;z-index:2;height:100%;padding:20px 24px clamp(28px,6vh,50px);justify-content:flex-end;background:none}
+      .hero-copy::before{inset:12px;border-color:rgba(255,255,255,.65)}
       .hero-copy .floral{display:none}
-      .hero h1{font-size:clamp(3.5rem,min(14vw,12vh),6.5rem)}
-      .hero-pretitle{margin-bottom:clamp(4px,1.6vh,15px);color:#672c29}
-      .hero-quote{font-size:clamp(.98rem,3.6vw,1.33rem);font-weight:600;margin:clamp(7px,1.6vh,17px) auto 8px;line-height:1.3}
-      .hero-date{font-size:clamp(1.2rem,4.7vw,1.65rem);letter-spacing:.14em;margin:3px 0 10px}
-      .hero-photo-caption{display:none}
-      .floral.tl,.floral.tr{width:180px;opacity:.6}
-      .floral.bl,.floral.br{width:210px;opacity:.6}
+      .hero h1{font-size:clamp(3.4rem,min(13vw,11vh),5.8rem);margin-bottom:2px}
+      .hero-pretitle{margin-bottom:4px;color:#672c29}
+      .hero-quote{font-size:clamp(.95rem,3.4vw,1.25rem);font-weight:600;margin:6px auto 4px;line-height:1.26}
+      .hero-date{font-size:clamp(1.18rem,4.4vw,1.6rem);letter-spacing:.14em;margin:3px 0 6px}
+      
       .venue{grid-template-columns:1fr;text-align:center;padding:14px;gap:23px}
       .venue-photo{height:235px;min-height:0}
       .venue .venue-details{padding:0 12px 15px}
@@ -263,44 +240,21 @@
       .timeline{padding-left:8px}
       .timeline::before{left:36px}
       .event{gap:15px}
-      .look-grid{gap:12px}
+      .look-grid{grid-template-columns:1fr;max-width:390px;gap:12px}
       .look-card{padding:7px;border-radius:15px}
-      .look-card img{height:clamp(220px,48vw,340px);border-radius:10px}
-      .look-card figcaption{font-size:1rem;padding:12px 5px 10px}
-      .look-card figcaption strong{font-size:.7rem}
-      .look-grid{grid-template-columns:1fr;max-width:390px}
       .look-card img{height:auto;max-height:420px;object-fit:contain}
-      .section{min-height:calc(100svh - var(--nav-h))}
+      .look-card figcaption{font-size:1rem;padding:12px 5px 10px}
     }
-    @media(max-width:370px){
-      .brand{font-size:1.72rem}
-      .brand .icon{width:21px;height:21px}
-      .hero h1{font-size:clamp(3.2rem,min(14vw,11vh),5rem)}
-      .hero-quote{font-size:clamp(.95rem,3.6vw,1.13rem)}
-      .hero-date{font-size:1.3rem}
-      .time-num{font-size:1.9rem}
-      .section-copy{font-size:1.26rem}
-      .account{font-size:.69rem;padding:10px}
-    }
-    @media(max-height:650px){
-      .hero-pretitle{font-size:.64rem}
-      .hero-quote{font-size:clamp(.92rem,2.8vh,1.08rem);line-height:1.23}
-      .hero h1{font-size:clamp(2.9rem,min(12vw,11vh),5rem)}
-      .hero-date{font-size:1.12rem}
-      .hero-scroll{font-size:.59rem}
-    }
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
   </style>
 </head>
 <body>
-  <!-- Iconos SVG locales: evita cargar una biblioteca de iconos completa. -->
+  <!-- Catálogo de Iconos SVG -->
   <svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
     <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.6 5.6 0 0 0-7.9 0l-.9.9-.9-.9a5.6 5.6 0 0 0-7.9 7.9L12 21l8.8-8.5a5.6 5.6 0 0 0 0-7.9Z"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 12 7-12 7V5Z"/></symbol>
     <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke-width="3"/></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M12 4v16m-6-6 6 6 6-6"/></symbol>
     <symbol id="i-map" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
     <symbol id="i-church" viewBox="0 0 24 24"><path d="M12 2v5m-3-3h6M4 22V11l8-4 8 4v11M2 22h20M10 22v-7h4v7M7 13h2m6 0h2"/></symbol>
     <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 3h14v18H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h13M3 18a3 3 0 0 1 3-3h13M8 7h7"/></symbol>
@@ -309,12 +263,13 @@
     <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 4-7 4-7 0s7-4 7 0Zm12-2c0 4-7 4-7 0s7-4 7 0Z"/></symbol>
     <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="12" rx="1"/><path d="M2 9h20M12 9v12M12 9C2 8 4 1 8 3c2 1 4 6 4 6Zm0 0c10-1 8-8 4-6-2 1-4 6-4 6Z"/></symbol>
     <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
   </svg>
 
   <div id="error-screen" class="error-screen" role="alert">
     <span class="eyebrow">Carla &amp; Oscar</span>
-    <h1 class="script-heading">Invitación especial</h1>
-    <p>Esta invitación es personalizada. Solicita a los novios tu enlace con el nombre del invitado.</p>
+    <h1 class="script-heading">Invitación personalizada</h1>
+    <p id="error-msg">Por favor ingresa con el enlace oficial proporcionado por los novios.</p>
   </div>
 
   <header class="navbar" id="navbar">
@@ -339,11 +294,9 @@
         <h1 id="hero-title"><span>Oscar</span><span class="amp">&amp;</span><span>Carla</span></h1>
         <p class="hero-quote">“Con la bendición de Dios, nuestros padres y la aprobación del mismísimo Sombrero Seleccionador, ¡nos casamos!”</p>
         <p class="hero-date">23 · 01 · 2027</p>
-        <!--a href="#nosotros" class="hero-scroll">Ver invitación <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a-->
       </div>
       <div class="hero-image">
         <img src="public/images/novios.jpg" alt="Fotografía de Carla y Oscar" fetchpriority="high" decoding="async" width="1200" height="1600">
-        <span class="hero-photo-caption" aria-hidden="true">Un amor para toda la vida</span>
       </div>
     </section>
 
@@ -351,7 +304,6 @@
       <img class="floral tl" src="public/images/flor-hibisco-coral.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <img class="floral br" src="public/images/ramo-tropical-2.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <div class="container">
-        <!--span class="eyebrow">Una invitación para ti</span-->
         <h2 id="agradecimiento-title" class="script-heading">Estimado invitado</h2>
         <p class="section-copy">Nuestra felicidad no estaría completa sin las personas que han iluminado nuestro camino, y queremos que nos acompañes en este día tan especial para nosotros.</p>
         <div class="flourish" aria-hidden="true"><svg class="icon"><use href="#i-heart"/></svg></div>
@@ -363,7 +315,6 @@
       <img class="floral tr soft" src="public/images/buganvilla-rosa.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <img class="floral bl faint" src="public/images/flor-hibisco-naranja.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <div class="container">
-        <!--span class="eyebrow">Sábado 23 de enero de 2027</span-->
         <h2 id="day-title" class="script-heading">El Gran Día</h2>
         <p class="section-copy">Cada día falta un poquito menos para celebrar juntos.</p>
         <div class="countdown" id="countdown" role="timer" aria-label="Cuenta regresiva para la boda">
@@ -376,7 +327,6 @@
         <div class="venue">
           <img class="venue-photo" src="public/images/local_villa_victoria.jpg" alt="Jardines de Villa Victoria, lugar de nuestra boda" loading="lazy" decoding="async" width="800" height="700">
           <div class="venue-details">
-            <!--span class="eyebrow">Nuestra celebración</span-->
             <h3>Villa Victoria</h3>
             <p>Pachacámac, Lima, Perú</p>
             <a class="btn btn-outline" href="https://maps.app.goo.gl/gMvfanpEZq5vjdbR8" target="_blank" rel="noopener noreferrer">
@@ -406,7 +356,6 @@
       <img class="floral tl faint" src="public/images/ramo-tropical-2.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <img class="floral br faint" src="public/images/buganvilla-rosa.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <div class="container">
-        <!-- <span class="eyebrow">Elegancia con color</span> -->
         <h2 id="dress-title" class="script-heading">Vestimenta</h2>
         <div class="look-grid">
           <figure class="look-card"><img src="public/images/vestidos.png" alt="Referencias de vestidos largos y midi de colores vivos" loading="lazy" decoding="async" width="600" height="900"><figcaption><strong>Inspiración para ellas</strong><span>Vestido midi o largo en colores vivos, con tacos cómodos para jardín. Evitar blanco, marfil o tonos similares.</span></figcaption></figure>
@@ -420,12 +369,10 @@
       <img class="floral tr soft" src="public/images/flor-hibisco-coral.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <img class="floral bl faint" src="public/images/flor-hibisco-naranja.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <div class="container">
-        <!-- <span class="eyebrow">Un detalle especial</span> -->
         <h2 id="gifts-title" class="script-heading">Contribuciones</h2>
         <div class="gifts-card">
           <svg class="icon" aria-hidden="true"><use href="#i-gift"/></svg>
           <p>Tu presencia es nuestro mejor regalo. Si además puedes tener un detalle con nosotros, cualquier aporte para nuestra luna de miel será recibido con muchísimo cariño.</p>
-          <!-- IMPORTANTE: estos números son los valores del HTML original. Reemplazarlos si son de prueba. -->
           <div class="account"><div><strong>CUENTA BBVA</strong><span>0011 ABC</span></div><button class="copy-btn" type="button" data-copy="0011 ABC" aria-label="Copiar cuenta BBVA"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
           <div class="account"><div><strong>CCI BBVA</strong><span>0023 DEF</span></div><button class="copy-btn" type="button" data-copy="0023 DEF" aria-label="Copiar CCI BBVA"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
           <p class="copy-hint" id="copy-status" role="status" aria-live="polite"></p>
@@ -433,27 +380,65 @@
       </div>
     </section>
 
+    <!-- Sección de Asistencia (Mejora 4: se oculta por completo si nbr es 0, nulo o vacío) -->
     <section id="asistencia" class="section rsvp center" aria-labelledby="rsvp-title">
       <img class="floral tl soft" src="public/images/buganvilla-fucsia.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <img class="floral br soft" src="public/images/ramo-tropical-2.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <div class="container">
-        <!-- <span class="eyebrow">Nos encantará verte</span> -->
-        <h2 id="rsvp-title" class="script-heading">Nos encantará verte</h2>
-        <p class="section-copy">¡Gracias por ser parte de nuestra aventura!<br> Confirma tu asistencia <strong>hasta el 30 de noviembre de 2026.</strong></p>
+        <h2 id="rsvp-title" class="script-heading">Confirmación</h2>
+        
+        <!-- Mejora 1: Este párrafo se oculta automáticamente si ya confirmó -->
+        <p class="section-copy" id="rsvp-deadline">¡Gracias por ser parte de nuestra aventura!<br> Confirma tu asistencia <strong>hasta el 30 de noviembre de 2026.</strong></p>
         <p class="section-copy" id="guest-summary" style="margin-top:15px;font-size:1.28rem"></p>
-        <!-- La petición se envía a la misma URL e IDs de Google Forms del documento original.
-             Un iframe externo NO permite comprobar en el navegador si Google registró la respuesta. -->
-        <iframe id="hidden_iframe" name="hidden_iframe" title="Envío de confirmación" hidden></iframe>
-        <form id="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSf4oPghZEFBfe_3VWN2Q_YcEo5edU97EyP8ulBbJAHm2cerVg/formResponse" method="post" target="hidden_iframe">
-          <input type="hidden" id="entry_invitado" name="entry.74825387" value="">
-          <input type="hidden" id="entry_acompanante" name="entry.71986889" value="">
-          <button class="btn btn-primary" type="submit" id="rsvp-button">Enviar confirmación <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></button>
-        </form>
+        
+        <div class="rsvp-box" id="rsvp-box">
+          <!-- Vista A: Confirmación pendiente -->
+          <div id="rsvp-form-container">
+            <div id="rsvp-selector-container" class="rsvp-options" hidden>
+              <div class="rsvp-options-title">Indica quiénes nos acompañarán:</div>
+              <div class="rsvp-selector">
+                <label class="rsvp-option">
+                  <input type="radio" name="guest_count" value="2" checked>
+                  <div class="rsvp-card">
+                    <span class="rsvp-num">2</span>
+                    <span class="rsvp-label">Ambos asistentes</span>
+                  </div>
+                </label>
+                <label class="rsvp-option">
+                  <input type="radio" name="guest_count" value="1">
+                  <div class="rsvp-card">
+                    <span class="rsvp-num">1</span>
+                    <span class="rsvp-label">Iré solo/a</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Mejora 2: Botón con estilo btn-outline idéntico a "Cómo llegar" -->
+            <button class="btn btn-outline" type="button" id="rsvp-button">
+              Confirmar asistencia <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg>
+            </button>
+          </div>
+
+          <!-- Vista B: Ya confirmado + Guardar en calendario -->
+          <div id="rsvp-confirmed-container" class="rsvp-confirmed-view" hidden>
+            <!-- Mejora 3: Check dinámico con el número de pases -->
+            <span class="rsvp-badge" id="rsvp-badge">✓ Asistencia confirmada</span>
+            <p id="rsvp-confirmed-text" style="margin:4px 0 10px;font-size:1.15rem;font-style:italic">¡Nos alegra inmensamente que nos acompañes!</p>
+            
+            <!-- Mejora 2: Botón de calendario con estilo btn-outline idéntico a "Cómo llegar" -->
+            <a href="public/event.ics" download="Boda-Carla-y-Oscar.ics" class="btn btn-outline" id="calendar-btn">
+              <svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg> Guardar en mi calendario
+            </a>
+          </div>
+        </div>
+        
         <p class="rsvp-message" id="rsvp-message" role="status" aria-live="polite" hidden></p>
       </div>
     </section>
 
     <section id="despedida" class="section farewell center" aria-labelledby="farewell-title">
+      <img class="farewell-bg" src="public/images/local_villa_victoria.jpg" alt="" loading="lazy" decoding="async" aria-hidden="true">
       <div class="farewell-content container">
         <span class="farewell-eyebrow">Carla &amp; Oscar · 23.01.2027</span>
         <h2 class="cursive" id="farewell-title">¡Te esperamos!</h2>
@@ -468,81 +453,265 @@
 
   <footer class="footer"><a href="#inicio" class="brand">Carla <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg> Oscar</a><small>23 · 01 · 2027 · PACHACÁMAC</small></footer>
 
-  <div id="musicWelcome" class="music-welcome" role="dialog" aria-modal="true" aria-labelledby="musicWelcomeTitle" aria-describedby="musicWelcomeDesc" hidden>
-    <div class="music-welcome-card">
-      <div class="music-welcome-icon" aria-hidden="true">♫</div>
-      <!--h2 id="musicWelcomeTitle" class="cursive">Nuestra canción</h2-->
-      <p id="musicWelcomeDesc">Te invitamos a recorrer nuestra historia con música. Puedes activarla ahora o en cualquier momento desde el botón <strong>♫</strong> de la esquina inferior.</p>
-      <div class="music-welcome-actions"><button id="musicWelcomePlay" class="btn btn-primary" type="button">Reproducir música</button><button id="musicWelcomeClose" class="btn btn-outline" type="button">Ahora no</button></div>
-    </div>
-  </div>
-
+  <!-- Mejora 5: Tooltip flotante ubicado a la izquierda (al costado) del botón -->
   <audio id="bgMusic" preload="none" loop><source src="public/music/todalavida.mp3" type="audio/mpeg"></audio>
-  <button id="musicToggle" class="music-toggle" type="button" aria-label="Reproducir música" aria-pressed="false" title="Reproducir música"><strong>♫</strong></button>
+  <div class="music-container">
+    <div id="musicTooltip" class="music-tooltip" role="tooltip" aria-hidden="true">
+      <span>♫ Dale play a nuestra canción</span>
+      <button type="button" class="music-tooltip-close" id="tooltipClose" aria-label="Cerrar sugerencia">&times;</button>
+    </div>
+    <button id="musicToggle" class="music-toggle" type="button" aria-label="Reproducir música" aria-pressed="false" title="Reproducir música">
+      <svg class="icon" id="musicIcon" aria-hidden="true"><use href="#i-play"/></svg>
+    </button>
+  </div>
 
   <script>
   (() => {
     'use strict';
     const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => document.querySelectorAll(selector);
+
+    /* ==========================================
+       CONFIGURACIÓN SHEETSON
+       ========================================== */
+    const API_KEY = 'rLxwCBqrritx4bp-tnHlaFsEbsaZJAbpNoTyU-kifyE5W8RL_9VJjiWOfbc';
+    const SPREADSHEET_ID = '1i-_V-kOf7qj3tO1pZQyj43YSV9h4gVGC5zGXngybhXA';
+    const SHEET_NAME = 'confirmaciones';
+    const BASE_URL = 'https://api.sheetson.com/v2/sheets';
+
+    function buildApiUrl(endpoint, params = {}) {
+      const url = new URL(`${BASE_URL}/${endpoint}`);
+      url.searchParams.append('apiKey', API_KEY);
+      url.searchParams.append('spreadsheetId', SPREADSHEET_ID);
+      Object.entries(params).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          url.searchParams.append(key, String(value));
+        }
+      });
+      return url.toString();
+    }
+
+    async function updateRow(rowIndex, updates) {
+      const url = buildApiUrl(`${SHEET_NAME}/${rowIndex}`);
+      const response = await fetch(url, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updates)
+      });
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      return await response.json();
+    }
+
+    /* ==========================================
+       VALIDACIÓN POR ID Y CARGA SHEETSON
+       ========================================== */
     const params = new URLSearchParams(location.search);
-    const clean = (value) => (value || '').trim().replace(/\s+/g, ' ').slice(0, 90);
-    const titleCase = (value) => clean(value).toLocaleLowerCase('es').replace(/(^|[\s-])([^\s-])/gu, (m, sep, char) => sep + char.toLocaleUpperCase('es'));
-    const invitado = titleCase(params.get('invitado'));
-    const acompanante = titleCase(params.get('acompanante'));
-    if (!invitado) {
+    const guestId = (params.get('id') || '').trim();
+
+    if (!guestId) {
       document.documentElement.classList.add('invalid');
       $('#error-screen').hidden = false;
       return;
     }
-    $('#agradecimiento-title').textContent = acompanante ? `Hola ${invitado} y ${acompanante}` : `Hola ${invitado}`;
-    //$('#guest-summary').textContent = acompanante ? `Confirmación para ${invitado} y ${acompanante}` : `Confirmación para ${invitado}`;
-    $('#guest-summary').textContent = acompanante ? `Confirmación para 2 invitados` : `Confirmación para 1 invitado`;
-    $('#entry_invitado').value = invitado;
-    $('#entry_acompanante').value = acompanante || '-';
-    document.documentElement.classList.add('ready');
 
-    // Navegación accesible con soporte de cierre al navegar, al hacer clic fuera y con Escape.
+    let guestData = null;
+    const titleCase = (value) => (value || '').trim().replace(/\s+/g, ' ').toLocaleLowerCase('es').replace(/(^|[\s-])([^\s-])/gu, (m, sep, char) => sep + char.toLocaleUpperCase('es'));
+
+    async function initGuest() {
+      try {
+        const response = await fetch(buildApiUrl(SHEET_NAME, { limit: 1000 }));
+        if (!response.ok) throw new Error('Error al conectar con la base de datos');
+        const data = await response.json();
+        const rows = data.results || (Array.isArray(data) ? data : []);
+
+        guestData = rows.find(r => String(r.id).trim().toLowerCase() === guestId.toLowerCase());
+
+        if (!guestData) {
+          $('#error-msg').textContent = 'No encontramos tu invitación con el ID proporcionado. Por favor contacta a los novios.';
+          document.documentElement.classList.add('invalid');
+          $('#error-screen').hidden = false;
+          return;
+        }
+
+        const name = titleCase(guestData.name);
+        const companion = titleCase(guestData.companion);
+        
+        // Mejora 4: Validación de nbr (0, nulo o vacío)
+        const rawNbr = guestData.nbr;
+        const parsedNbr = parseInt(rawNbr, 10);
+        const hasValidNbr = rawNbr !== null && rawNbr !== undefined && String(rawNbr).trim() !== '' && !isNaN(parsedNbr) && parsedNbr > 0;
+
+        $('#agradecimiento-title').textContent = companion ? `Hola ${name} y ${companion}` : `Hola ${name}`;
+
+        if (!hasValidNbr) {
+          // Ocultar completamente la zona de confirmación y su acceso en el menú
+          const rsvpSection = $('#asistencia');
+          if (rsvpSection) rsvpSection.hidden = true;
+          const rsvpNavLink = $(`#navLinks a[href="#asistencia"]`);
+          if (rsvpNavLink) rsvpNavLink.hidden = true;
+        } else {
+          const isConfirmed = String(guestData.confirmed).trim().toLowerCase() === 'true' || guestData.confirmed === true;
+          renderRSVPState(isConfirmed, parsedNbr, companion);
+        }
+
+        document.documentElement.classList.add('ready');
+      } catch (err) {
+        console.error(err);
+        $('#error-msg').textContent = 'Ocurrió un error al cargar la información. Intenta recargar la página.';
+        document.documentElement.classList.add('invalid');
+        $('#error-screen').hidden = false;
+      }
+    }
+
+    /* ==========================================
+       CONTROL DE ESTADOS DE CONFIRMACIÓN
+       ========================================== */
+    function renderRSVPState(isConfirmed, nbr, companion) {
+      const summary = $('#guest-summary');
+      const formContainer = $('#rsvp-form-container');
+      const confirmedContainer = $('#rsvp-confirmed-container');
+      const selectorContainer = $('#rsvp-selector-container');
+      const confirmedText = $('#rsvp-confirmed-text');
+      const deadlineText = $('#rsvp-deadline');
+      const rsvpBadge = $('#rsvp-badge');
+
+      if (isConfirmed) {
+        formContainer.hidden = true;
+        confirmedContainer.hidden = false;
+        
+        // Mejora 1: Ocultar el texto de fecha límite si ya confirmó
+        if (deadlineText) deadlineText.hidden = true;
+        
+        // Mejora 3: Indicar pases en el check de confirmación
+        const passText = nbr === 2 ? 'Pase para 2' : 'Pase para 1';
+        rsvpBadge.textContent = `✓ Asistencia confirmada · ${passText}`;
+
+        summary.textContent = nbr === 2 ? `Asistencia registrada para 2 personas.` : `Asistencia registrada para 1 persona.`;
+        confirmedText.textContent = nbr === 2 
+          ? `¡Qué alegría! Carla y Oscar los esperan para celebrar juntos.` 
+          : `¡Qué alegría! Carla y Oscar te esperan para celebrar juntos.`;
+      } else {
+        formContainer.hidden = false;
+        confirmedContainer.hidden = true;
+        if (deadlineText) deadlineText.hidden = false;
+        
+        if (nbr === 2 || Boolean(companion)) {
+          summary.textContent = `Invitación válida para 2 personas.`;
+          selectorContainer.hidden = false;
+        } else {
+          summary.textContent = `Invitación individual.`;
+          selectorContainer.hidden = true;
+        }
+      }
+    }
+
+    const rsvpBtn = $('#rsvp-button');
+    const rsvpMsg = $('#rsvp-message');
+
+    rsvpBtn.addEventListener('click', async () => {
+      if (!guestData || !guestData.rowIndex) return;
+
+      rsvpBtn.disabled = true;
+      rsvpBtn.textContent = 'Guardando confirmación…';
+      rsvpMsg.hidden = true;
+
+      const selectedRadio = document.querySelector('input[name="guest_count"]:checked');
+      const finalNbr = selectedRadio ? parseInt(selectedRadio.value, 10) : (parseInt(guestData.nbr, 10) || 1);
+
+      try {
+        await updateRow(guestData.rowIndex, {
+          confirmed: true,
+          nbr: finalNbr
+        });
+
+        guestData.confirmed = true;
+        guestData.nbr = finalNbr;
+
+        renderRSVPState(true, finalNbr, guestData.companion);
+        rsvpMsg.textContent = '¡Tu confirmación se ha registrado con éxito!';
+        rsvpMsg.classList.remove('warning');
+        rsvpMsg.hidden = false;
+      } catch (err) {
+        console.error(err);
+        rsvpBtn.disabled = false;
+        rsvpBtn.textContent = 'Reintentar confirmación';
+        rsvpMsg.textContent = 'Hubo un inconveniente al guardar tu respuesta. Por favor intenta nuevamente.';
+        rsvpMsg.classList.add('warning');
+        rsvpMsg.hidden = false;
+      }
+    });
+
+    initGuest();
+
+    /* ==========================================
+       NAVEGACIÓN PRECISA
+       ========================================== */
     const menuBtn = $('#menuToggle');
     const nav = $('#navLinks');
     const menuIcon = $('#menuIcon');
+    const navBar = $('#navbar');
+
     const setMenu = (open) => {
       nav.classList.toggle('open', open);
       menuBtn.setAttribute('aria-expanded', String(open));
       menuBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
       menuIcon.setAttribute('href', open ? '#i-close' : '#i-menu');
     };
-    // Resaltado del enlace correspondiente a la sección predominante en pantalla.
-    const sectionLinks = [...nav.querySelectorAll('a[href^="#"]')];
-    const trackedSections = sectionLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-    let scrollFrame = 0;
+
+    menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') setMenu(false); });
+    document.addEventListener('click', event => { if (!event.target.closest('.navbar')) setMenu(false); });
+
+    const navLinksList = $$('.nav-links a');
+    navLinksList.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        if (!targetId || !targetId.startsWith('#')) return;
+
+        e.preventDefault();
+        setMenu(false);
+
+        const targetEl = document.querySelector(targetId);
+        if (targetEl && !targetEl.hidden) {
+          const navOffset = navBar.getBoundingClientRect().height;
+          const elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - navOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
     const syncActiveSection = () => {
-      scrollFrame = 0;
-      const midpoint = window.innerHeight * 0.48 + $('#navbar').getBoundingClientRect().height * 0.52;
-      let active = trackedSections[0];
-      for (const section of trackedSections) {
+      const activeSections = [...nav.querySelectorAll('a[href^="#"]')]
+        .map(a => document.querySelector(a.getAttribute('href')))
+        .filter(s => s && !s.hidden);
+
+      const midpoint = window.innerHeight * 0.45 + navBar.getBoundingClientRect().height * 0.55;
+      let active = activeSections[0];
+      for (const section of activeSections) {
         if (section.getBoundingClientRect().top <= midpoint) active = section;
       }
-      sectionLinks.forEach(a => {
-        const isActive = a.getAttribute('href') === '#' + active.id;
+      navLinksList.forEach(a => {
+        const isActive = active && a.getAttribute('href') === '#' + active.id;
         a.classList.toggle('active', isActive);
         if (isActive) a.setAttribute('aria-current', 'location');
         else a.removeAttribute('aria-current');
       });
     };
-    window.addEventListener('scroll', () => { if (!scrollFrame) scrollFrame = requestAnimationFrame(syncActiveSection); }, {passive:true});
+    window.addEventListener('scroll', syncActiveSection, {passive:true});
     window.addEventListener('resize', syncActiveSection, {passive:true});
-    syncActiveSection();
 
-    menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
-    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
-    document.addEventListener('keydown', event => { if (event.key === 'Escape') setMenu(false); });
-    document.addEventListener('click', event => { if (!event.target.closest('.navbar')) setMenu(false); });
-    window.matchMedia('(min-width: 851px)').addEventListener('change', event => { if (event.matches) setMenu(false); });
-
-    // ISO-8601 con offset de Lima (UTC-05) para que la cuenta sea idéntica en cualquier país.
+    /* ==========================================
+       CUENTA REGRESIVA
+       ========================================== */
     const weddingTime = Date.parse('2027-01-23T15:00:00-05:00');
     let clockTimer;
     const pad = n => String(n).padStart(2, '0');
+    
     const updateCountdown = () => {
       const diff = Math.max(0, weddingTime - Date.now());
       const secs = Math.floor(diff / 1000);
@@ -553,105 +722,66 @@
       if (diff <= 0) {
         clearInterval(clockTimer);
         $('#day-status').textContent = '¡Llegó el gran día!';
-        $('#countdown').setAttribute('aria-label', '¡Llegó el gran día!');
       }
     };
     updateCountdown();
     if (weddingTime > Date.now()) clockTimer = window.setInterval(updateCountdown, 1000);
-    document.addEventListener('visibilitychange', () => { if (!document.hidden) updateCountdown(); });
 
-    // Música: solo se reproduce después de la interacción del usuario.
+    /* ==========================================
+       MÚSICA Y TOOLTIP AL COSTADO
+       ========================================== */
     const audio = $('#bgMusic');
     const musicBtn = $('#musicToggle');
     const musicIcon = $('#musicIcon');
+    const musicTooltip = $('#musicTooltip');
+    const tooltipClose = $('#tooltipClose');
+
     const syncAudio = () => {
       const playing = !audio.paused && !audio.ended;
       musicBtn.setAttribute('aria-pressed', String(playing));
       musicBtn.setAttribute('aria-label', playing ? 'Pausar música' : 'Reproducir música');
       musicBtn.title = playing ? 'Pausar música' : 'Reproducir música';
-      musicIcon.setAttribute('href', playing ? '#i-pause' : '#i-play');
+      musicIcon.querySelector('use').setAttribute('href', playing ? '#i-pause' : '#i-play');
+      if (playing) hideTooltip();
     };
+
     musicBtn.addEventListener('click', async () => {
-      if (!audio.paused) { audio.pause(); return; }
-      try { await audio.play(); }
-      catch { musicBtn.title = 'No se pudo reproducir la música'; }
+      if (!audio.paused) {
+        audio.pause();
+      } else {
+        try { await audio.play(); } catch (e) { console.warn('Reproducción bloqueada', e); }
+      }
       syncAudio();
     });
-    ['play','pause','ended','error'].forEach(event => audio.addEventListener(event, syncAudio));
 
-    const musicWelcome = $('#musicWelcome');
-    const welcomePlay = $('#musicWelcomePlay');
-    const welcomeClose = $('#musicWelcomeClose');
-    const closeMusicWelcome = () => {
-      musicWelcome.hidden = true;
-      document.body.classList.remove('modal-open');
-      musicBtn.focus({preventScroll:true});
+    ['play','pause','ended'].forEach(ev => audio.addEventListener(ev, syncAudio));
+
+    const hideTooltip = () => {
+      musicTooltip.classList.remove('visible');
+      musicTooltip.setAttribute('aria-hidden', 'true');
     };
-    welcomeClose.addEventListener('click', closeMusicWelcome);
-    welcomePlay.addEventListener('click', async () => {
-      try { await audio.play(); }
-      catch { musicBtn.title = 'No se pudo reproducir la música'; }
-      syncAudio();
-      closeMusicWelcome();
-    });
-    musicWelcome.addEventListener('click', e => { if(e.target === musicWelcome) closeMusicWelcome(); });
-    musicWelcome.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeMusicWelcome();
-      if (e.key !== 'Tab') return;
-      const buttons = [welcomePlay, welcomeClose];
-      const ix = buttons.indexOf(document.activeElement);
-      if(e.shiftKey && ix === 0){e.preventDefault();welcomeClose.focus();}
-      else if(!e.shiftKey && ix === 1){e.preventDefault();welcomePlay.focus();}
-    });
-    musicWelcome.hidden = false;
-    document.body.classList.add('modal-open');
-    welcomePlay.focus({preventScroll:true});
 
-    // Copiar cuenta/CCI cuando el navegador lo permite.
-    function $$(selector) { return document.querySelectorAll(selector); }
+    tooltipClose.addEventListener('click', hideTooltip);
+
+    setTimeout(() => {
+      if (audio.paused) {
+        musicTooltip.classList.add('visible');
+        musicTooltip.setAttribute('aria-hidden', 'false');
+        setTimeout(hideTooltip, 6500);
+      }
+    }, 1500);
+
+    /* ==========================================
+       COPIADO DE CUENTAS BBVA
+       ========================================== */
     $$('.copy-btn').forEach(btn => btn.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(btn.dataset.copy);
         $('#copy-status').textContent = 'Número copiado al portapapeles.';
       } catch {
-        $('#copy-status').textContent = 'No se pudo copiar automáticamente. Mantén presionado el número para seleccionarlo.';
+        $('#copy-status').textContent = 'No se pudo copiar automáticamente. Puedes copiarlo manualmente.';
       }
     }));
-
-    // Se conserva Google Forms vía iframe por compatibilidad. Carga del iframe != respuesta confirmada.
-    const form = $('#rsvp-form');
-    const frame = $('#hidden_iframe');
-    const submitBtn = $('#rsvp-button');
-    const msg = $('#rsvp-message');
-    let pending = false;
-    let timeout;
-    const showMessage = (text, warning = false) => {
-      msg.textContent = text;
-      msg.hidden = false;
-      msg.classList.toggle('warning', warning);
-    };
-    form.addEventListener('submit', event => {
-      if (pending) { event.preventDefault(); return; }
-      pending = true;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Enviando…';
-      showMessage('Estamos intentando enviar tu confirmación. Espera un momento.');
-      timeout = setTimeout(() => {
-        if (!pending) return;
-        pending = false;
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Reintentar envío';
-        showMessage('No pudimos comprobar el resultado. Verifica con los novios antes de volver a enviarlo, para evitar duplicados.', true);
-      }, 15000);
-    });
-    frame.addEventListener('load', () => {
-      if (!pending) return;
-      pending = false;
-      clearTimeout(timeout);
-      // El contenido de Google Forms está en otro dominio y no podemos inspeccionar su éxito.
-      showMessage('Se ha completado el intento de envío. Si necesitas verificar que tu confirmación quedó registrada, comunícate con los novios.');
-      submitBtn.textContent = 'Confirmación enviada';
-    });
   })();
   </script>
 </body>
