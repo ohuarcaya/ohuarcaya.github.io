@@ -11,7 +11,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Foto protagonista: máxima prioridad de carga -->
   <link rel="preload" href="public/images/novios.jpg" as="image" fetchpriority="high">
   
   <script>document.documentElement.classList.replace('no-js','js');</script>
@@ -148,7 +147,6 @@
     /* Confirmación y Calendario */
     .rsvp{background:radial-gradient(ellipse at 50% 100%,rgba(247,183,51,.28),transparent 60%),linear-gradient(180deg,#fff9ed,#ffe9db);padding-bottom:clamp(95px,12vw,150px)}
     .rsvp .section-copy{max-width:600px}
-    .rsvp .btn{min-width:min(100%,320px)}
     
     .rsvp-box{width:min(100%,520px);margin:24px auto 0;padding:26px 20px;background:rgba(255,252,247,.9);border:1px solid var(--linea);border-radius:22px;box-shadow:0 10px 30px rgba(102,58,39,.06)}
     .rsvp-options{margin-bottom:22px;text-align:center}
@@ -160,6 +158,13 @@
     .rsvp-option input[type="radio"]:checked + .rsvp-card{border-color:var(--vino);background:#fff1e8;box-shadow:0 4px 12px rgba(179,57,18,.15)}
     .rsvp-num{font-family:var(--script);font-size:2.2rem;line-height:1;color:var(--vino)}
     .rsvp-label{font-family:var(--sans);font-size:.7rem;font-weight:600;text-transform:uppercase;color:#5a3f36;margin-top:2px}
+
+    /* NUEVO: Estilos para el bloque de acciones de formulario (Confirmar vs Declinar) */
+    .rsvp-actions {display:flex; flex-direction:column; gap:6px; align-items:center;}
+    .rsvp-actions .btn {width:100%;}
+    .rsvp-decline-btn {background:none; border:none; color:var(--muted); font:600 .75rem var(--sans); text-decoration:underline; cursor:pointer; padding:10px; transition:color .2s;}
+    .rsvp-decline-btn:hover {color:var(--vino);}
+    .rsvp-decline-btn:disabled {opacity:0.6; cursor:wait;}
 
     .rsvp-confirmed-view{display:flex;flex-direction:column;align-items:center;gap:15px;margin-top:10px}
     .rsvp-badge{display:inline-flex;align-items:center;gap:8px;padding:9px 20px;border-radius:999px;background:#eef6e8;border:1px solid #a3c48f;color:#355c27;font-family:var(--sans);font-weight:600;font-size:.82rem}
@@ -184,9 +189,7 @@
     .footer small{display:block;margin-top:9px;font:500 .69rem var(--sans);letter-spacing:.19em}
     .footer .icon{color:var(--coral)}
 
-    /* ==========================================================
-       MEJORA 5: TOOLTIP AL COSTADO (IZQUIERDA) DEL BOTÓN
-       ========================================================== */
+    /* MÚSICA Y TOOLTIP */
     .music-container{position:fixed;z-index:1010;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));display:flex;align-items:center}
     .music-toggle{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border:1.5px solid rgba(145,61,56,.25);border-radius:50%;background:rgba(255,250,240,.96);color:var(--vino);box-shadow:0 9px 30px rgba(70,37,23,.18);backdrop-filter:blur(8px);cursor:pointer;transition:transform .2s,background .2s}
     .music-toggle:hover{transform:scale(1.06)}
@@ -248,7 +251,6 @@
   </style>
 </head>
 <body>
-  <!-- Catálogo de Iconos SVG -->
   <svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
     <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.6 5.6 0 0 0-7.9 0l-.9.9-.9-.9a5.6 5.6 0 0 0-7.9 7.9L12 21l8.8-8.5a5.6 5.6 0 0 0 0-7.9Z"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
@@ -290,9 +292,9 @@
       <div class="hero-copy">
         <img class="floral tl soft" src="public/images/ramo-tropical-1.png" alt="" aria-hidden="true" decoding="async" onerror="this.hidden=true">
         <img class="floral br soft" src="public/images/buganvilla-fucsia.png" alt="" aria-hidden="true" decoding="async" onerror="this.hidden=true">
-        <p class="hero-pretitle">¡Nos casamos!</p>
+        <!--p class="hero-pretitle">¡Nos casamos!</p-->
         <h1 id="hero-title"><span>Oscar</span><span class="amp">&amp;</span><span>Carla</span></h1>
-        <p class="hero-quote">“Con la bendición de Dios, nuestros padres y la aprobación del mismísimo Sombrero Seleccionador, ¡nos casamos!”</p>
+        <p class="hero-quote">“Con la bendición de Dios, nuestros padres y la aprobación del mismísimo Sombrero Seleccionador,<br> ¡nos casamos!”</p>
         <p class="hero-date">23 · 01 · 2027</p>
       </div>
       <div class="hero-image">
@@ -316,7 +318,7 @@
       <img class="floral bl faint" src="public/images/flor-hibisco-naranja.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <div class="container">
         <h2 id="day-title" class="script-heading">El Gran Día</h2>
-        <p class="section-copy">Cada día falta un poquito menos para celebrar juntos.</p>
+        <!--p class="section-copy">Cada día falta un poquito menos para celebrar juntos.</p-->
         <div class="countdown" id="countdown" role="timer" aria-label="Cuenta regresiva para la boda">
           <div class="time-box"><span class="time-num" id="days">--</span><span class="time-label">Días</span></div>
           <div class="time-box"><span class="time-num" id="hours">--</span><span class="time-label">Horas</span></div>
@@ -344,10 +346,10 @@
         <div class="center"><h2 id="itinerary-title" class="script-heading">Itinerario</h2></div>
         <ol class="timeline">
           <li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-church"/></svg></span><div><h3>Ceremonia Religiosa</h3><time datetime="2027-01-23T15:00:00-05:00">15:00 hrs</time></div></li>
-          <li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span><div><h3>Ceremonia Civil</h3><time datetime="2027-01-23T16:00:00-05:00">16:00 hrs</time></div></li>
-          <li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-drink"/></svg></span><div><h3>Cóctel de Bienvenida</h3><time datetime="2027-01-23T16:30:00-05:00">16:30 hrs</time></div></li>
-          <li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><div><h3>Recepción y Cena</h3><time datetime="2027-01-23T17:00:00-05:00">17:00 hrs</time></div></li>
-          <li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-music"/></svg></span><div><h3>¡Hora Loca!</h3><time datetime="2027-01-23T20:00:00-05:00">20:00 hrs</time></div></li>
+          <!--li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span><div><h3>Ceremonia Civil</h3><time datetime="2027-01-23T16:00:00-05:00">16:00 hrs</time></div></li-->
+          <li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-drink"/></svg></span><div><h3>Cóctel de Bienvenida</h3><time datetime="2027-01-23T16:30:00-05:00">16:00 hrs</time></div></li>
+          <li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><div><h3>Recepción y Cena</h3><time datetime="2027-01-23T17:00:00-05:00">16:30 hrs</time></div></li>
+          <li class="event"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-music"/></svg></span><div><h3>¡Hora de Rumbear!</h3><time datetime="2027-01-23T20:00:00-05:00">17:30 hrs</time></div></li>
         </ol>
       </div>
     </section>
@@ -361,7 +363,7 @@
           <figure class="look-card"><img src="public/images/vestidos.png" alt="Referencias de vestidos largos y midi de colores vivos" loading="lazy" decoding="async" width="600" height="900"><figcaption><strong>Inspiración para ellas</strong><span>Vestido midi o largo en colores vivos, con tacos cómodos para jardín. Evitar blanco, marfil o tonos similares.</span></figcaption></figure>
           <figure class="look-card"><img src="public/images/trajes.png" alt="Referencias de trajes elegantes para hombres" loading="lazy" decoding="async" width="600" height="900"><figcaption><strong>Inspiración para ellos</strong><span>Traje elegante; corbata opcional.</span></figcaption></figure>
         </div>
-        <p class="dress-note">Gracias por ayudarnos a crear la atmósfera con tu estilo y elegancia.<br>¡Nos vemos en la pista de baile!</p>
+        <!--p class="dress-note">Gracias por ayudarnos a crear la atmósfera con tu estilo y elegancia.<br>¡Nos vemos en la pista de baile!</p-->
       </div>
     </section>
 
@@ -369,39 +371,41 @@
       <img class="floral tr soft" src="public/images/flor-hibisco-coral.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <img class="floral bl faint" src="public/images/flor-hibisco-naranja.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <div class="container">
-        <h2 id="gifts-title" class="script-heading">Contribuciones</h2>
+        <h2 id="gifts-title" class="script-heading">Detalles</h2>
         <div class="gifts-card">
           <svg class="icon" aria-hidden="true"><use href="#i-gift"/></svg>
-          <p>Tu presencia es nuestro mejor regalo. Si además puedes tener un detalle con nosotros, cualquier aporte para nuestra luna de miel será recibido con muchísimo cariño.</p>
-          <div class="account"><div><strong>CUENTA BBVA</strong><span>0011 ABC</span></div><button class="copy-btn" type="button" data-copy="0011 ABC" aria-label="Copiar cuenta BBVA"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
-          <div class="account"><div><strong>CCI BBVA</strong><span>0023 DEF</span></div><button class="copy-btn" type="button" data-copy="0023 DEF" aria-label="Copiar CCI BBVA"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+          <p>Tu presencia es nuestro mejor regalo. <br>Si desean hacernos un presente, su generosidad será bien recibida en:</p>
+          <div class="account"><div><strong>Cuenta BBVA</strong><span>0011-0960-0200255593</span></div><button class="copy-btn" type="button" data-copy="001109600200255593" aria-label="Copiar cuenta BBVA"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+          <div class="account"><div><strong>Interbancario BBVA</strong><span>011-96000-0200255593-22</span></div><button class="copy-btn" type="button" data-copy="01196000020025559322" aria-label="Copiar CCI BBVA"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+          <div class="account"><div><strong>Yape/Plin Oscar</strong><span>935 928 603</span></div><button class="copy-btn" type="button" data-copy="935928603" aria-label="Copiar Yape/Plin Oscar"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+          <div class="account"><div><strong>Plin Carla</strong><span>992 851 066</span></div><button class="copy-btn" type="button" data-copy="992851066" aria-label="Copiar Plin Carla"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
           <p class="copy-hint" id="copy-status" role="status" aria-live="polite"></p>
         </div>
       </div>
     </section>
 
-    <!-- Sección de Asistencia (Mejora 4: se oculta por completo si nbr es 0, nulo o vacío) -->
+    <!-- Sección de Asistencia con bloque de Decline (Mejora 1 y 2) -->
     <section id="asistencia" class="section rsvp center" aria-labelledby="rsvp-title">
       <img class="floral tl soft" src="public/images/buganvilla-fucsia.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <img class="floral br soft" src="public/images/ramo-tropical-2.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.hidden=true">
       <div class="container">
         <h2 id="rsvp-title" class="script-heading">Confirmación</h2>
         
-        <!-- Mejora 1: Este párrafo se oculta automáticamente si ya confirmó -->
-        <p class="section-copy" id="rsvp-deadline">¡Gracias por ser parte de nuestra aventura!<br> Confirma tu asistencia <strong>hasta el 30 de noviembre de 2026.</strong></p>
+        <!--p class="section-copy" id="rsvp-deadline">¡Gracias por ser parte de nuestra aventura!<br> Esperamos que puedas confirmar tu asistencia <strong>hasta el 30 de noviembre de 2026.</strong></p-->
+        <p class="section-copy" id="rsvp-deadline">Esperamos que puedas confirmar tu asistencia<br><strong>hasta el 30 de noviembre de 2026.</strong></p>
         <p class="section-copy" id="guest-summary" style="margin-top:15px;font-size:1.28rem"></p>
         
         <div class="rsvp-box" id="rsvp-box">
           <!-- Vista A: Confirmación pendiente -->
           <div id="rsvp-form-container">
             <div id="rsvp-selector-container" class="rsvp-options" hidden>
-              <div class="rsvp-options-title">Indica quiénes nos acompañarán:</div>
+              <div class="rsvp-options-title">Nos acompañarán:</div>
               <div class="rsvp-selector">
                 <label class="rsvp-option">
                   <input type="radio" name="guest_count" value="2" checked>
                   <div class="rsvp-card">
                     <span class="rsvp-num">2</span>
-                    <span class="rsvp-label">Ambos asistentes</span>
+                    <span class="rsvp-label">Ambos Invitados</span>
                   </div>
                 </label>
                 <label class="rsvp-option">
@@ -414,19 +418,22 @@
               </div>
             </div>
 
-            <!-- Mejora 2: Botón con estilo btn-outline idéntico a "Cómo llegar" -->
-            <button class="btn btn-outline" type="button" id="rsvp-button">
-              Confirmar asistencia <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg>
-            </button>
+            <!-- Botones de Acción -->
+            <div class="rsvp-actions">
+              <button class="btn btn-outline" type="button" id="rsvp-button">
+                Confirmar asistencia <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg>
+              </button>
+              <button class="rsvp-decline-btn" type="button" id="rsvp-decline-button">
+                No podré asistir 🥺
+              </button>
+            </div>
           </div>
 
-          <!-- Vista B: Ya confirmado + Guardar en calendario -->
+          <!-- Vista B: Ya confirmado + Guardar en calendario / Declinado -->
           <div id="rsvp-confirmed-container" class="rsvp-confirmed-view" hidden>
-            <!-- Mejora 3: Check dinámico con el número de pases -->
             <span class="rsvp-badge" id="rsvp-badge">✓ Asistencia confirmada</span>
             <p id="rsvp-confirmed-text" style="margin:4px 0 10px;font-size:1.15rem;font-style:italic">¡Nos alegra inmensamente que nos acompañes!</p>
             
-            <!-- Mejora 2: Botón de calendario con estilo btn-outline idéntico a "Cómo llegar" -->
             <a href="public/event.ics" download="Boda-Carla-y-Oscar.ics" class="btn btn-outline" id="calendar-btn">
               <svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg> Guardar en mi calendario
             </a>
@@ -453,7 +460,6 @@
 
   <footer class="footer"><a href="#inicio" class="brand">Carla <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg> Oscar</a><small>23 · 01 · 2027 · PACHACÁMAC</small></footer>
 
-  <!-- Mejora 5: Tooltip flotante ubicado a la izquierda (al costado) del botón -->
   <audio id="bgMusic" preload="none" loop><source src="public/music/todalavida.mp3" type="audio/mpeg"></audio>
   <div class="music-container">
     <div id="musicTooltip" class="music-tooltip" role="tooltip" aria-hidden="true">
@@ -536,15 +542,14 @@
         const name = titleCase(guestData.name);
         const companion = titleCase(guestData.companion);
         
-        // Mejora 4: Validación de nbr (0, nulo o vacío)
+        // Validación de nbr (0, nulo o vacío ocultan la vista. Se permite -1 como declinado)
         const rawNbr = guestData.nbr;
         const parsedNbr = parseInt(rawNbr, 10);
-        const hasValidNbr = rawNbr !== null && rawNbr !== undefined && String(rawNbr).trim() !== '' && !isNaN(parsedNbr) && parsedNbr > 0;
+        const hasValidNbr = rawNbr !== null && rawNbr !== undefined && String(rawNbr).trim() !== '' && !isNaN(parsedNbr) && parsedNbr !== 0;
 
         $('#agradecimiento-title').textContent = companion ? `Hola ${name} y ${companion}` : `Hola ${name}`;
 
         if (!hasValidNbr) {
-          // Ocultar completamente la zona de confirmación y su acceso en el menú
           const rsvpSection = $('#asistencia');
           if (rsvpSection) rsvpSection.hidden = true;
           const rsvpNavLink = $(`#navLinks a[href="#asistencia"]`);
@@ -574,29 +579,42 @@
       const confirmedText = $('#rsvp-confirmed-text');
       const deadlineText = $('#rsvp-deadline');
       const rsvpBadge = $('#rsvp-badge');
+      const calendarBtn = $('#calendar-btn');
 
       if (isConfirmed) {
         formContainer.hidden = true;
         confirmedContainer.hidden = false;
-        
-        // Mejora 1: Ocultar el texto de fecha límite si ya confirmó
         if (deadlineText) deadlineText.hidden = true;
-        
-        // Mejora 3: Indicar pases en el check de confirmación
-        const passText = nbr === 2 ? 'Pase para 2' : 'Pase para 1';
-        rsvpBadge.textContent = `✓ Asistencia confirmada · ${passText}`;
 
-        summary.textContent = nbr === 2 ? `Asistencia registrada para 2 personas.` : `Asistencia registrada para 1 persona.`;
-        confirmedText.textContent = nbr === 2 
-          ? `¡Qué alegría! Carla y Oscar los esperan para celebrar juntos.` 
-          : `¡Qué alegría! Carla y Oscar te esperan para celebrar juntos.`;
+        if (nbr === -1) {
+          // Estado: Declinado
+          rsvpBadge.textContent = `✓ Respuesta registrada`;
+          rsvpBadge.style.background = '#f5ecec';
+          rsvpBadge.style.borderColor = '#d4a8a8';
+          rsvpBadge.style.color = '#7a4444';
+          
+          summary.textContent = `Asistencia declinada.`;
+          confirmedText.textContent = `Lamentamos que no puedas asistir, pero agradecemos tu pronta respuesta.`;
+          calendarBtn.hidden = true; // Ocultamos botón de calendario
+        } else {
+          // Estado: Confirmado para 1 o 2
+          const passText = nbr === 2 ? 'Pase para 2' : 'Pase para 1';
+          rsvpBadge.textContent = `✓ Asistencia confirmada · ${passText}`;
+          rsvpBadge.style = ''; // Restablecemos estilos por defecto en caso de estar declinado antes
+
+          summary.textContent = nbr === 2 ? `Asistencia registrada para 2 invitados.` : `Asistencia registrada para 1 invitado.`;
+          confirmedText.textContent = nbr === 2 
+            ? `¡Qué alegría! Carla y Oscar los esperan para celebrar juntos.` 
+            : `¡Qué alegría! Carla y Oscar te esperan para celebrar juntos.`;
+          calendarBtn.hidden = false;
+        }
       } else {
         formContainer.hidden = false;
         confirmedContainer.hidden = true;
         if (deadlineText) deadlineText.hidden = false;
         
         if (nbr === 2 || Boolean(companion)) {
-          summary.textContent = `Invitación válida para 2 personas.`;
+          summary.textContent = `Invitación válida para 2 adultos.`;
           selectorContainer.hidden = false;
         } else {
           summary.textContent = `Invitación individual.`;
@@ -606,17 +624,29 @@
     }
 
     const rsvpBtn = $('#rsvp-button');
+    const rsvpDeclineBtn = $('#rsvp-decline-button');
     const rsvpMsg = $('#rsvp-message');
 
-    rsvpBtn.addEventListener('click', async () => {
+    // Función unificada para manejar Confirmación Positiva o Negativa (Declinar)
+    async function submitRSVP(isAttending) {
       if (!guestData || !guestData.rowIndex) return;
 
+      const btnToDisable = isAttending ? rsvpBtn : rsvpDeclineBtn;
+      const originalText = btnToDisable.textContent;
+
       rsvpBtn.disabled = true;
-      rsvpBtn.textContent = 'Guardando confirmación…';
+      rsvpDeclineBtn.disabled = true;
+      
+      btnToDisable.textContent = 'Guardando respuesta…';
       rsvpMsg.hidden = true;
 
-      const selectedRadio = document.querySelector('input[name="guest_count"]:checked');
-      const finalNbr = selectedRadio ? parseInt(selectedRadio.value, 10) : (parseInt(guestData.nbr, 10) || 1);
+      let finalNbr = -1; // Por defecto declinado
+      
+      if (isAttending) {
+        const selectedRadio = document.querySelector('input[name="guest_count"]:checked');
+        finalNbr = selectedRadio ? parseInt(selectedRadio.value, 10) : (parseInt(guestData.nbr, 10) || 1);
+        if (finalNbr <= 0) finalNbr = 1; // Seguridad por si la BD estaba en -1 previo a recargar
+      }
 
       try {
         await updateRow(guestData.rowIndex, {
@@ -628,18 +658,22 @@
         guestData.nbr = finalNbr;
 
         renderRSVPState(true, finalNbr, guestData.companion);
-        rsvpMsg.textContent = '¡Tu confirmación se ha registrado con éxito!';
+        rsvpMsg.textContent = '¡Tu respuesta se ha registrado con éxito!';
         rsvpMsg.classList.remove('warning');
         rsvpMsg.hidden = false;
       } catch (err) {
         console.error(err);
         rsvpBtn.disabled = false;
-        rsvpBtn.textContent = 'Reintentar confirmación';
+        rsvpDeclineBtn.disabled = false;
+        btnToDisable.textContent = originalText;
         rsvpMsg.textContent = 'Hubo un inconveniente al guardar tu respuesta. Por favor intenta nuevamente.';
         rsvpMsg.classList.add('warning');
         rsvpMsg.hidden = false;
       }
-    });
+    }
+
+    rsvpBtn.addEventListener('click', () => submitRSVP(true));
+    rsvpDeclineBtn.addEventListener('click', () => submitRSVP(false));
 
     initGuest();
 
